@@ -87,7 +87,7 @@ export default class EditAlumnoFormB extends React.Component {
         <ButtonGroup>
           <Link to="/">
             <Button className="Cancell-Button" color="danger">
-              Cancell
+              Cancel
             </Button>
           </Link>
         </ButtonGroup>

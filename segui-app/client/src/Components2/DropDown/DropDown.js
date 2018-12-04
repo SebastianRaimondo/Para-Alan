@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 import {
   Dropdown,
@@ -30,11 +31,21 @@ class DropDown extends Component {
           Ver
         </DropdownToggle>
         <DropdownMenu>
-          <DropdownItem header>Header</DropdownItem>
-          <DropdownItem disabled>Action</DropdownItem>
-          <DropdownItem>Another Action</DropdownItem>
+          <DropdownItem header>ALumnos</DropdownItem>
+          <DropdownItem>
+            <Link to="/">Ver Alumnos</Link>
+          </DropdownItem>
+          <DropdownItem>
+            <Link to="/crearAlumno">Nuevo Alumno</Link>
+          </DropdownItem>
           <DropdownItem divider />
-          <DropdownItem>Another Action</DropdownItem>
+          <DropdownItem header>Profesores</DropdownItem>
+          <DropdownItem>
+            <Link to="/profesores">Ver Profesores</Link>
+          </DropdownItem>
+          <DropdownItem>
+            <Link to="/crearProfesor">Nuevo Profesor</Link>
+          </DropdownItem>
         </DropdownMenu>
       </Dropdown>
     );

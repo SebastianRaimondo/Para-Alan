@@ -61,7 +61,7 @@ ProfCtrl.deleteProfesor = async (req, res, next) => {
   try {
     const { id } = req.params;
     console.log(id);
-    const result = await Alu.deleteOne({ _id: id });
+    const result = await Prof.deleteOne({ _id: id });
     res.noContent();
   } catch (error) {
     console.log(error);

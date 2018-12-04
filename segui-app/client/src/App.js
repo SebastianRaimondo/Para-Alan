@@ -1,47 +1,63 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router, Switch } from "react-router-dom";
 import Route from "react-router-dom/Route";
 import NavBar from "./Components2/NavBar/NavBar";
 import CardAlumnoBrowse from "./Components2/Card/CardAlumnoBrowse";
 import CardAlumnoForm from "./Components2/Card/CardAlumnoForm";
 import { Row, Col } from "reactstrap";
 import CardEditAlumnoForm from "./Components2/Card/CardEditAlumnoForm";
+import CardNuevoProfesorForm from "./Components2/Card/CardNuevoProfesorForm";
+import CardProfesorBrowse from "./Components2/Card/CardProfesorBrowse";
+import CardEditProfesorForm from "./Components2/Card/CardEditProfesorForm";
 
 import "./App.css";
 
 class App extends Component {
   render() {
     return (
-      <Router>
-        <div>
-          <NavBar />
-          <div className="container">
-            <Route path="/" exact component={CardAlumnoBrowse} />
+      <div>
+        <div className="container">
+          <Router>
+            <div>
+              <NavBar />
+              <Row>
+                <Switch>
+                  <Route
+                    path="/crearProfesor"
+                    exact
+                    component={CardNuevoProfesorForm}
+                  />
 
-            <Row>
-              <Col sm="3">
-                <Route
-                  path="/crearAlumno"
-                  exact
-                  strict
-                  component={CardAlumnoForm}
-                />
-              </Col>
-            </Row>
-
-            <Row>
-              <Col sm="3">
-                <Route
-                  path="/editAlumno/:id"
-                  exact
-                  strict
-                  component={CardEditAlumnoForm}
-                />
-              </Col>
-            </Row>
-          </div>
+                  <Route
+                    path="/profesores"
+                    exact
+                    strict
+                    component={CardProfesorBrowse}
+                  />
+                  <Route path="/" exact component={CardAlumnoBrowse} />
+                  <Route
+                    path="/editarProfesor/:id"
+                    exact
+                    component={CardEditProfesorForm}
+                  />
+                  <Route
+                    path="/crearAlumno"
+                    exact
+                    strict
+                    component={CardAlumnoForm}
+                  />
+                  <Route
+                    path="/editAlumno/:id"
+                    exact
+                    strict
+                    component={CardEditAlumnoForm}
+                  />
+                </Switch>
+              </Row>
+            </div>
+          </Router>
         </div>
-      </Router>
+      </div>
     );
   }
 }
