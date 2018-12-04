@@ -1,0 +1,12 @@
+.tb {
+  background-color: rgb(139, 51, 51);
+  color: rgb(255, 241, 241);
+}
+
+.Delete-Button {
+  margin-right: 4px;
+}
+
+.Edit-Button {
+  margin-right: 8px;
+}

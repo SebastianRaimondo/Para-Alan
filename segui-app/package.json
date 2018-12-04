@@ -1,0 +1,28 @@
+{
+  "name": "carapp",
+  "version": "1.0.0",
+  "description": "A simple test application for react express mongoose",
+  "author": "",
+  "license": "GPL",
+  "scripts": {
+    "postinstall": "cd client; npm install; cd ../server; npm install",
+    "dev": "concurrently \"npm run client\" \"npm run server\"",
+    "client": "cd client; npm run start",
+    "server": "cd server; npm run dev"
+  },
+  "devDependencies": {
+    "concurrently": "^4.0.1"
+  },
+  "dependencies": {
+    "@material-ui/core": "^3.6.1",
+    "bootstrap": "^4.1.3",
+    "formik": "^1.3.2",
+    "g": "^2.0.1",
+    "material-ui-datatables": "^0.18.2",
+    "mui-datatables": "^2.0.0-beta-41",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "react-router-dom": "^4.3.1",
+    "reactstrap": "^6.5.0"
+  }
+}
