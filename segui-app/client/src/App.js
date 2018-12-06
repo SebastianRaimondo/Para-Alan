@@ -4,11 +4,12 @@ import Route from "react-router-dom/Route";
 import NavBar from "./Components2/NavBar/NavBar";
 import CardAlumnoBrowse from "./Components2/Card/CardAlumnoBrowse";
 import CardAlumnoForm from "./Components2/Card/CardAlumnoForm";
-import { Row, Col } from "reactstrap";
+import { Row } from "reactstrap";
 import CardEditAlumnoForm from "./Components2/Card/CardEditAlumnoForm";
 import CardNuevoProfesorForm from "./Components2/Card/CardNuevoProfesorForm";
 import CardProfesorBrowse from "./Components2/Card/CardProfesorBrowse";
 import CardEditProfesorForm from "./Components2/Card/CardEditProfesorForm";
+import CardAlumnosAsignadosBrowser from "./Components2/Card/CardAlumnosAsignadoBrowser";
 
 import "./App.css";
 

@@ -21,13 +21,18 @@ class AlumnoRow extends Component {
                 onClick={e => {
                   if (
                     window.confirm(
-                      "¿Esta seguro que desea eliminar este Profesor?"
+                      "¿Esta seguro que desea eliminar este profesor?"
                     )
                   )
                     this.props.cb(this.props.id);
                 }}
               >
                 Eliminar
+              </Button>
+            </ButtonGroup>
+            <ButtonGroup>
+              <Button className="Edit-Button" color="info">
+                Alumnos asignados
               </Button>
             </ButtonGroup>
           </td>
