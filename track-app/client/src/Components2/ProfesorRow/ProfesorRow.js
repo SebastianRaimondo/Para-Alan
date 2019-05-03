@@ -30,11 +30,6 @@ class AlumnoRow extends Component {
                 Eliminar
               </Button>
             </ButtonGroup>
-            <ButtonGroup>
-              <Button className="Edit-Button" color="info">
-                Alumnos asignados
-              </Button>
-            </ButtonGroup>
           </td>
         </tr>
       </tbody>

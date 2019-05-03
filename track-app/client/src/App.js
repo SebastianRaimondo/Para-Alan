@@ -10,6 +10,7 @@ import CardNuevoProfesorForm from "./Components2/Card/CardNuevoProfesorForm";
 import CardProfesorBrowse from "./Components2/Card/CardProfesorBrowse";
 import CardEditProfesorForm from "./Components2/Card/CardEditProfesorForm";
 import CardAlumnosAsignadosBrowser from "./Components2/Card/CardAlumnosAsignadoBrowser";
+import Pestañas from "./Components2/Pestañas/Pestañas"
 
 import "./App.css";
 
@@ -20,7 +21,7 @@ class App extends Component {
         <div className="container">
           <Router>
             <div>
-              <NavBar />
+              
               <Row>
                 <Switch>
                   <Route
@@ -35,7 +36,10 @@ class App extends Component {
                     strict
                     component={CardProfesorBrowse}
                   />
-                  <Route path="/" exact component={CardAlumnoBrowse} />
+                  <Route path="/" 
+                     exact
+                     strict
+                     component={Pestañas} />
                   <Route
                     path="/editarProfesor/:id"
                     exact
