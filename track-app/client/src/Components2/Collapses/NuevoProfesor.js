@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Collapse, Button, CardBody, Card } from 'reactstrap';
-import CardNuevoProfesorForm from "../Card/CardNuevoProfesorForm"
+
+import NuevoProfesorForm from "../Forms/NuevoProfesorForm"
 
 class NuevoProfesor extends Component {
   constructor(props) {
@@ -13,12 +14,14 @@ class NuevoProfesor extends Component {
     this.setState(state => ({ collapse: !state.collapse }));
   }
 
+ 
+
   render() {
     return (
       <div>
         <Button color="primary" onClick={this.toggle} style={{ marginBottom: '1rem' }}>Agregar Profesor</Button>
         <Collapse isOpen={this.state.collapse}>
-      <CardNuevoProfesorForm/>
+      <NuevoProfesorForm {...this.props} onCollapse={()=> this.toggle()} />
         </Collapse>
       </div>
     );

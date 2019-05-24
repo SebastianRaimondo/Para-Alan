@@ -33,7 +33,7 @@ function editProf(id, aluInfo, cb) {
 }
 
 function createProf(alu, cb) {
-  axios.post("http://localhost:3001/api/profesores/", alu).then(() => cb());
+  axios.post("http://localhost:3001/api/profesores/", alu).then(() => {console.log("prueba api"); cb()});
 }
 
 function deleteProf(id, fn) {

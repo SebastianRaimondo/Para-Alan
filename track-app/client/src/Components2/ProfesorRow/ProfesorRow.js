@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Button, ButtonGroup } from "reactstrap";
 import { Link } from "react-router-dom";
 
-class AlumnoRow extends Component {
+class ProfesorRow extends Component {
   render() {
     return (
       <tbody>
@@ -21,10 +21,10 @@ class AlumnoRow extends Component {
                 onClick={e => {
                   if (
                     window.confirm(
-                      "¿Esta seguro que desea eliminar este profesor?"
+                      "¿Esta seguro que desea eliminar a inuaj?"
                     )
                   )
-                    this.props.cb(this.props.id);
+                    this.props.callbackFn(this.props.id);
                 }}
               >
                 Eliminar
@@ -36,4 +36,4 @@ class AlumnoRow extends Component {
     );
   }
 }
-export default AlumnoRow;
+export default ProfesorRow;

@@ -3,6 +3,7 @@ import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, Ca
 import classnames from 'classnames';
 import CardProfesorBrowse from "../Card/CardProfesorBrowse"
 import CardAlumnoBrowse from "../Card/CardAlumnoBrowse"
+import NuevoProfesorForm from "../Forms/NuevoProfesorForm"
 
 
 
@@ -64,7 +65,7 @@ export default class Pestañas extends React.Component {
           <TabPane tabId="1">
             <Row>
               <Col sm="12">
-                <CardProfesorBrowse/>
+                <CardProfesorBrowse {...this.props}/>
               </Col>
             </Row>
           </TabPane>

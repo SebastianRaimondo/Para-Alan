@@ -6,16 +6,27 @@ import api from "../../components/api/apiRar";
 export default class NuevoProfesorForm extends React.Component {
   constructor(props) {
     super(props);
-
+    this.clean = this.clean.bind(this);
+    
     this.state = {
       nombre: "",
       apellido: ""
     };
   }
 
+
+ clean(){
+  this.setState(state=>{state.nombre= ""; state.apellido= ""});
+  this.props.onCollapse();
+
+ }
+
   accept() {
-    api.createProf(this.state, () => this.props.history.push("/profesores"));
+
+    api.createProf(this.state, ()=> this.props.addFn());
   }
+
+  
 
   render() {
     return (
@@ -45,8 +56,8 @@ export default class NuevoProfesorForm extends React.Component {
           </Button>
         </ButtonGroup>
         <ButtonGroup>
-          <Link to="/profesores">
-            <Button className="Cancell-Button" color="danger">
+          <Link to="/">
+            <Button className="Cancell-Button" color="danger"  onClick={() => this.clean()}>
               Cancel
             </Button>
           </Link>

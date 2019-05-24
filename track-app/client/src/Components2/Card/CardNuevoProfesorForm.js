@@ -10,7 +10,7 @@ const CardNuevoProfesorForm = props => {
       <Card>
         <CardImg top width="100%" />
         <CardBody>
-          <NuevoProfesorForm {...props} />
+          <NuevoProfesorForm {...this.props} />
         </CardBody>
       </Card>
     </div>

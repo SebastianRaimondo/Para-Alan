@@ -11,8 +11,10 @@ import CardProfesorBrowse from "./Components2/Card/CardProfesorBrowse";
 import CardEditProfesorForm from "./Components2/Card/CardEditProfesorForm";
 import CardAlumnosAsignadosBrowser from "./Components2/Card/CardAlumnosAsignadoBrowser";
 import Pestañas from "./Components2/Pestañas/Pestañas"
+import ProfesorBrowse from "./Components2/ProfesroBrowse/ProfesorBrowse"
 
 import "./App.css";
+
 
 class App extends Component {
   render() {
@@ -52,10 +54,23 @@ class App extends Component {
                     component={CardAlumnoForm}
                   />
                   <Route
+                    path="/prueba"
+                    exact
+                    strict
+                    component={ProfesorBrowse}
+                  />
+                  <Route
                     path="/editAlumno/:id"
                     exact
                     strict
                     component={CardEditAlumnoForm}
+                  />
+
+                  <Route
+                    path="/poronga"
+                    exact
+                    strict
+                    component={CardProfesorBrowse}
                   />
                 </Switch>
               </Row>

@@ -2,6 +2,8 @@ import React from "react";
 import { Table } from "reactstrap";
 import ProfesorRow from "../ProfesorRow/ProfesorRow";
 import api from "../../components/api/apiRar";
+import NuevoProfesorForm from "../Forms/NuevoProfesorForm"
+import NuevoProfesor from "../Collapses/NuevoProfesor"
 
 export default class ProfesorBrowse extends React.Component {
   constructor() {
@@ -11,10 +13,15 @@ export default class ProfesorBrowse extends React.Component {
     };
   }
 
-  del(id) {
+  delete(id) {
     api.deleteProf(id, () =>
       api.getProfesores().then(res => this.setState({ data: res.data }))
     );
+  }
+
+  add() {
+    console.log("prueba de add")
+      api.getProfesores().then(res => this.setState({ data: res.data }))
   }
 
   componentDidMount() {
@@ -24,23 +31,32 @@ export default class ProfesorBrowse extends React.Component {
   render() {
     const { data } = this.state;
     return (
+
+    
       <Table>
+          
         <thead>
           <tr>
+            <div>
+          <NuevoProfesor addFn={()=> this.add()}/>
+          </div>
+          <div>
             <th>Nombre</th>
             <th>Apellido</th>
+            </div>
           </tr>
         </thead>
-        {data.map((alu, idx) => (
+        {data.map((prof, idx) => (
           <ProfesorRow
             key={idx}
             indice={idx}
-            nombre={alu.nombre}
-            apellido={alu.apellido}
-            id={alu._id}
-            cb={id => this.del(id)}
+            nombre={prof.nombre}
+            apellido={prof.apellido}
+            id={prof._id}
+            callbackFn={id => this.delete(id)}
           />
         ))}
+         
       </Table>
     );
   }
