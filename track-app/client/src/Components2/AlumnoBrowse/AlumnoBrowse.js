@@ -2,6 +2,7 @@ import React from "react";
 import { Table } from "reactstrap";
 import AlumnoRow from "../AlumnoRow/AlumnoRow";
 import api from "../../components/api/apiRar";
+import NuevoAlumno from "../Collapses/NuevoAlumno"
 
 export default class AlumnoBrowse extends React.Component {
   constructor() {
@@ -9,6 +10,11 @@ export default class AlumnoBrowse extends React.Component {
     this.state = {
       data: []
     };
+  }
+
+  add() {
+  
+    api.getAlumumnos().then(res => this.setState({ data: res.data }))
   }
 
   del(id) {
@@ -24,8 +30,13 @@ export default class AlumnoBrowse extends React.Component {
   render() {
     const { data } = this.state;
     return (
+
+
       <Table>
         <thead>
+        <div>
+          <NuevoAlumno addFn={()=> this.add()} />
+        </div> 
           <tr>
             <th>Nombre</th>
             <th>Apellido</th>

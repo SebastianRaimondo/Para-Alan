@@ -6,7 +6,7 @@ import api from "../../components/api/apiRar";
 export default class NuevoAlumnoForm extends React.Component {
   constructor(props) {
     super(props);
-
+    this.clean = this.clean.bind(this);
     this.state = {
       nombre: "",
       apellido: "",
@@ -16,8 +16,14 @@ export default class NuevoAlumnoForm extends React.Component {
     };
   }
 
+  clean(){
+    this.setState(state=>{state.nombre= ""; state.apellido="";state.nLegajo="";state.email="";state.userGit=""});
+    this.props.onCollapse();
+  
+   }
+
   accept() {
-    api.createAlu(this.state, () => this.props.history.push("/"));
+    api.createAlu(this.state, ()=> this.props.addFn());
   }
 
   render() {
@@ -78,7 +84,7 @@ export default class NuevoAlumnoForm extends React.Component {
         </ButtonGroup>
         <ButtonGroup>
           <Link to="/">
-            <Button className="Cancell-Button" color="danger">
+          <Button className="Cancell-Button" color="danger"  onClick={() => this.clean()}>
               Cancel
             </Button>
           </Link>

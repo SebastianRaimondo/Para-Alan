@@ -26,7 +26,6 @@ export default class NuevoProfesorForm extends React.Component {
     api.createProf(this.state, ()=> this.props.addFn());
   }
 
-  
 
   render() {
     return (
