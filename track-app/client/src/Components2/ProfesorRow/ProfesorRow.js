@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Button, ButtonGroup } from "reactstrap";
 import { Link } from "react-router-dom";
+import EditarProfesor from "../Collapses/EditarProfesor"
 
 class ProfesorRow extends Component {
   render() {
@@ -11,9 +12,7 @@ class ProfesorRow extends Component {
           <td id="Apellido">{this.props.apellido}</td>
 
           <td>
-            <Link to={"/editarProfesor/" + this.props.id} color="info">
-              <Button className="Edit-Button">Editar</Button>
-            </Link>
+           
             <ButtonGroup>
               <Button
                 className="Delete-Button"
@@ -29,7 +28,9 @@ class ProfesorRow extends Component {
               >
                 Eliminar
               </Button>
+              
             </ButtonGroup>
+            <EditarProfesor identificador={this.props.id}/>
           </td>
         </tr>
       </tbody>

@@ -37,6 +37,7 @@ export default class AlumnoBrowse extends React.Component {
         <div>
           <NuevoAlumno addFn={()=> this.add()} />
         </div> 
+      
           <tr>
             <th>Nombre</th>
             <th>Apellido</th>

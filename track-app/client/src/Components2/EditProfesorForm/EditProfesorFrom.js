@@ -13,14 +13,19 @@ export default class EditProfesorForm extends React.Component {
     };
   }
 
+  cancell(){
+    
+    this.props.onCollapse();
+   }
+   
   accept() {
     api.editProf(this.props.match.params.id, this.state, () =>
-      this.props.history.push("/profesores")
+      this.props.history.push("")
     );
   }
 
   componentDidMount() {
-    api.getProf(this.props.match.params.id).then(res => {
+    api.getProf(this.props.identificador).then(res => {
       this.setState(res.data);
     });
   }
@@ -53,11 +58,11 @@ export default class EditProfesorForm extends React.Component {
           </Button>
         </ButtonGroup>
         <ButtonGroup>
-          <Link to="/profesores">
-            <Button className="Cancell-Button" color="danger">
+          
+          <Button className="Cancell-Button" color="danger"  onClick={() => this.cancell()}>
               Cancel
             </Button>
-          </Link>
+         
         </ButtonGroup>
       </Form>
     );

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Collapse, Button, CardBody, Card } from 'reactstrap';
-
+import CardAlumnoForm from "../Card/CardAlumnoForm"
 import NuevoAlumnoForm from "../Forms/NuevoAlumnoForm"
 
 class NuevoAlumno extends Component {
@@ -23,7 +23,7 @@ class NuevoAlumno extends Component {
       <div>
         <Button color="primary" onClick={this.toggle}   style={{ marginBottom: '1rem' }}>Agregar Alumno</Button>
         <Collapse isOpen={this.state.collapse}>
-      <NuevoAlumnoForm {...this.props} onCollapse={()=> this.toggle()} />
+      <CardAlumnoForm {...this.props} onCollapse={()=> this.toggle()} />
         </Collapse>
       </div>
     );

@@ -32,17 +32,19 @@ export default class ProfesorBrowse extends React.Component {
     const { data } = this.state;
     return (
 
-    
+     
+
       <Table>
-          
+           
         <thead>
           <tr>
-            <div>
-          <NuevoProfesor addFn={()=> this.add()}/>
-          </div>
-          <div>
+            
+       
             <th>Nombre</th>
             <th>Apellido</th>
+            <th>Acciones</th>
+            <div>
+            <th> <NuevoProfesor addFn={()=> this.add()}/></th>
             </div>
           </tr>
         </thead>
