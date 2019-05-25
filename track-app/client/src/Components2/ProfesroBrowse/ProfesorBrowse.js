@@ -43,6 +43,7 @@ export default class ProfesorBrowse extends React.Component {
             <th>Nombre</th>
             <th>Apellido</th>
             <th>Acciones</th>
+        
             <div>
             <th> <NuevoProfesor addFn={()=> this.add()}/></th>
             </div>

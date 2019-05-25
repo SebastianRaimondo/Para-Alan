@@ -50,7 +50,7 @@ export default class NuevoProfesorForm extends React.Component {
         </FormGroup>
 
         <ButtonGroup>
-          <Button className="Edit-Button" onClick={() => this.accept()}>
+          <Button className="Edit-Button" color="success" onClick={() => this.accept()}>
             Ok
           </Button>
         </ButtonGroup>

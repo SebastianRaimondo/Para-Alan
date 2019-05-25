@@ -12,11 +12,13 @@ class ProfesorRow extends Component {
           <td id="Apellido">{this.props.apellido}</td>
 
           <td>
-           
-            <ButtonGroup>
+         
+         <ButtonGroup>
+            
               <Button
                 className="Delete-Button"
                 color="danger"
+                
                 onClick={e => {
                   if (
                     window.confirm(
@@ -27,10 +29,15 @@ class ProfesorRow extends Component {
                 }}
               >
                 Eliminar
+                
+
               </Button>
+
               
-            </ButtonGroup>
-            <EditarProfesor identificador={this.props.id}/>
+              
+              <EditarProfesor identificador={this.props.id}/>
+            
+              </ButtonGroup>
           </td>
         </tr>
       </tbody>

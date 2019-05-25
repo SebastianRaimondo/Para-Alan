@@ -18,7 +18,7 @@ class EditarProfesor extends Component {
   render() {
     return (
       <div>
-        <Button color="primary" onClick={this.toggle}   style={{ marginBottom: '1rem' }}>Editar</Button>
+        <Button color="primary" onClick={this.toggle}>Editar</Button>
         <Collapse isOpen={this.state.collapse}>
       <CardEditProfesorForm {...this.props} onCollapse={()=> this.toggle()} />
         </Collapse>
