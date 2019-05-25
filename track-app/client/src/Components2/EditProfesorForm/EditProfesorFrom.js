@@ -13,17 +13,18 @@ export default class EditProfesorForm extends React.Component {
     };
   }
 
-  cancell(){
-    
+  cancell(){ 
     this.props.onCollapse();
    }
+
+  
    
   accept() {
     api.editProf(this.props.id, this.state,this.props.cbAdd
-    );
+    )
   }
 
-  componentDidMount() {
+  componentWillReceiveProps() {
     api.getProf(this.props.id).then(res => {
       this.setState(res.data);
     });
