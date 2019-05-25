@@ -19,13 +19,12 @@ export default class EditProfesorForm extends React.Component {
    }
    
   accept() {
-    api.editProf(this.props.match.params.id, this.state, () =>
-      this.props.history.push("")
+    api.editProf(this.props.id, this.state,this.props.cbAdd
     );
   }
 
   componentDidMount() {
-    api.getProf(this.props.identificador).then(res => {
+    api.getProf(this.props.id).then(res => {
       this.setState(res.data);
     });
   }

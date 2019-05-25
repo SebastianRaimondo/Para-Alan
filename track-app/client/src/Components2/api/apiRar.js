@@ -28,8 +28,7 @@ function getProf(id) {
 
 function editProf(id, profInfo, cb) {
   axios
-    .put("http://localhost:3001/api/profesores/" + id, aluInfo)
-    .then(() => cb());
+    .put("http://localhost:3001/api/profesores/" + id, aluInfo).then(() => cb());
 }
 
 function createProf(prof, cb) {

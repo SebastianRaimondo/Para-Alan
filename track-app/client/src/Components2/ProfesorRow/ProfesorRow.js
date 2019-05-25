@@ -22,7 +22,7 @@ class ProfesorRow extends Component {
                 onClick={e => {
                   if (
                     window.confirm(
-                      "¿Esta seguro que desea eliminar a inuaj?"
+                      "¿Esta seguro que desea eliminar este profesor?"
                     )
                   )
                     this.props.callbackFn(this.props.id);
@@ -33,10 +33,7 @@ class ProfesorRow extends Component {
 
               </Button>
 
-              
-              
-              <EditarProfesor identificador={this.props.id}/>
-            
+              <EditarProfesor {...this.props} />
               </ButtonGroup>
           </td>
         </tr>

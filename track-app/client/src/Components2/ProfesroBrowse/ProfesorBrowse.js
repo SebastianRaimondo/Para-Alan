@@ -2,7 +2,6 @@ import React from "react";
 import { Table } from "reactstrap";
 import ProfesorRow from "../ProfesorRow/ProfesorRow";
 import api from "../../components/api/apiRar";
-import NuevoProfesorForm from "../Forms/NuevoProfesorForm"
 import NuevoProfesor from "../Collapses/NuevoProfesor"
 
 export default class ProfesorBrowse extends React.Component {
@@ -20,7 +19,7 @@ export default class ProfesorBrowse extends React.Component {
   }
 
   add() {
-    console.log("prueba de add")
+  
       api.getProfesores().then(res => this.setState({ data: res.data }))
   }
 
@@ -57,6 +56,7 @@ export default class ProfesorBrowse extends React.Component {
             apellido={prof.apellido}
             id={prof._id}
             callbackFn={id => this.delete(id)}
+            cbAdd={id => this.add()}
           />
         ))}
          
