@@ -14,7 +14,7 @@ class ProfesorRow extends Component {
           <td>
          
          <ButtonGroup>
-            
+         <EditarProfesor {...this.props} />
               <Button
                 className="Delete-Button"
                 color="danger"
@@ -33,7 +33,7 @@ class ProfesorRow extends Component {
 
               </Button>
 
-              <EditarProfesor {...this.props} />
+              
               </ButtonGroup>
           </td>
         </tr>

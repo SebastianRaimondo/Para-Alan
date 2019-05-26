@@ -58,6 +58,7 @@ export default class AlumnoBrowse extends React.Component {
             userGit={alu.userGit}
             id={alu._id}
             cb={id => this.del(id)}
+            cbAdd={id => this.add()}
           />
         ))}
       </Table>

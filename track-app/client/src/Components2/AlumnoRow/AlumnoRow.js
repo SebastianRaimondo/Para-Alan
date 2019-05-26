@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Button, ButtonGroup } from "reactstrap";
 import { Link } from "react-router-dom";
+import EditarAlumno from "../Collapses/EditarAlumno"
 
 class AlumnoRow extends Component {
   render() {
@@ -9,15 +10,14 @@ class AlumnoRow extends Component {
         <tr key={this.props.indice}>
           <td id="nombre">{this.props.nombre}</td>
           <td id="Apellido">{this.props.apellido}</td>
-          <td id="num legajo">{this.props.nLegajo}</td>
           <td id="email">{this.props.email}</td>
+          <td id="num legajo">{this.props.nLegajo}</td>
           <td id="user git">{this.props.userGit}</td>
 
           <td>
-            <Link to={"/editAlumno/" + this.props.id} color="info">
-              <Button className="Edit-Button">Editar</Button>
-            </Link>
+          
             <ButtonGroup>
+            <EditarAlumno {...this.props} />
               <Button
                 className="Delete-Button"
                 color="danger"

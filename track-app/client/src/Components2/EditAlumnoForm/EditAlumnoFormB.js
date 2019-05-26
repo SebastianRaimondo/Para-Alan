@@ -15,19 +15,23 @@ export default class EditAlumnoFormB extends React.Component {
       userGit: ""
     };
   }
+  
+  cancell(){ 
+    this.props.onCollapse();
+   }
 
   accept() {
-    api.editAlu(this.props.match.params.id, this.state, () =>
-      this.props.history.push("/")
-    );
+    api.editAlu(this.props.id, this.state,this.props.cbAdd
+    )
   }
 
-  componentDidMount() {
-    api.getAlu(this.props.match.params.id).then(res => {
+  componentWillReceiveProps() {
+    api.getAlu(this.props.id).then(res => {
       this.setState(res.data);
     });
   }
 
+  
   render() {
     return (
       <Form>
@@ -80,16 +84,14 @@ export default class EditAlumnoFormB extends React.Component {
         </FormGroup>
 
         <ButtonGroup>
-          <Button className="Edit-Button" onClick={() => this.accept()}>
+          <Button className="Edit-Button"  color="success" onClick={() => this.accept()}>
             Ok
           </Button>
         </ButtonGroup>
         <ButtonGroup>
-          <Link to="/">
-            <Button className="Cancell-Button" color="danger">
+        <Button className="Cancell-Button" color="danger"  onClick={() => this.cancell()}>
               Cancel
             </Button>
-          </Link>
         </ButtonGroup>
       </Form>
     );
