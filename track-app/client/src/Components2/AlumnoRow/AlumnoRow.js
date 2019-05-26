@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { Button, ButtonGroup } from "reactstrap";
-import { Link } from "react-router-dom";
 import EditarAlumno from "../Collapses/EditarAlumno"
+import { FaTrash } from 'react-icons/fa';
+
+
 
 class AlumnoRow extends Component {
   render() {
@@ -21,6 +23,7 @@ class AlumnoRow extends Component {
               <Button
                 className="Delete-Button"
                 color="danger"
+                size="sm"
                 onClick={e => {
                   if (
                     window.confirm(
@@ -30,7 +33,8 @@ class AlumnoRow extends Component {
                     this.props.cb(this.props.id);
                 }}
               >
-                Eliminar
+                <FaTrash />
+               
               </Button>
             </ButtonGroup>
           </td>

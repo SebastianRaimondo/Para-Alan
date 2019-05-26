@@ -2,6 +2,8 @@ import React from "react";
 import { Form, FormGroup, Label, Input, Button, ButtonGroup } from "reactstrap";
 import { Link } from "react-router-dom";
 import api from "../../components/api/apiRar";
+import { FaCheck} from 'react-icons/fa';
+import { FaTimes } from 'react-icons/fa';
 
 export default class NuevoProfesorForm extends React.Component {
   constructor(props) {
@@ -50,16 +52,16 @@ export default class NuevoProfesorForm extends React.Component {
         </FormGroup>
 
         <ButtonGroup>
-          <Button className="Edit-Button" color="success" onClick={() => this.accept()}>
-            Ok
+          <Button className="Edit-Button" color="success" size="sm" onClick={() => this.accept()}>
+            <FaCheck/>
           </Button>
         </ButtonGroup>
         <ButtonGroup>
-          <Link to="/">
-            <Button className="Cancell-Button" color="danger"  onClick={() => this.clean()}>
-              Cancel
+          
+            <Button className="Cancell-Button" color="danger" size="sm" onClick={() => this.clean()}>
+             <FaTimes/>
             </Button>
-          </Link>
+          
         </ButtonGroup>
       </Form>
     );

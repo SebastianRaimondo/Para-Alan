@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Collapse, Button, CardBody, Card } from 'reactstrap';
 import CardEditProfesorForm from "../Card/CardEditProfesorForm"
+import { FaEdit } from 'react-icons/fa';
 
 class EditarProfesor extends Component {
   constructor(props) {
@@ -18,7 +19,7 @@ class EditarProfesor extends Component {
   render() {
     return (
       <div>
-        <Button color="primary" onClick={this.toggle}>Editar</Button>
+        <Button color="primary" size="sm" onClick={this.toggle}><FaEdit/></Button>
         <Collapse isOpen={this.state.collapse}>
       <CardEditProfesorForm {...this.props} onCollapse={()=> this.toggle()} />
         </Collapse>

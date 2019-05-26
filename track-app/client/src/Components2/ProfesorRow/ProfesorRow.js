@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Button, ButtonGroup } from "reactstrap";
-import { Link } from "react-router-dom";
 import EditarProfesor from "../Collapses/EditarProfesor"
+import { FaTrash } from 'react-icons/fa';
 
 class ProfesorRow extends Component {
   render() {
@@ -18,6 +18,7 @@ class ProfesorRow extends Component {
               <Button
                 className="Delete-Button"
                 color="danger"
+                size="sm"
                 
                 onClick={e => {
                   if (
@@ -28,7 +29,7 @@ class ProfesorRow extends Component {
                     this.props.callbackFn(this.props.id);
                 }}
               >
-                Eliminar
+                <FaTrash/>
                 
 
               </Button>
