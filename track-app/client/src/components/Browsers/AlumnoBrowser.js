@@ -1,10 +1,10 @@
 import React from "react";
 import { Table } from "reactstrap";
-import AlumnoRow from "../AlumnoRow/AlumnoRow";
-import api from "../../components/api/apiRar";
+import AlumnoRow from "../Rows/AlumnoRow";
+import api from "../Api/apiRar";
 import NuevoAlumno from "../Collapses/NuevoAlumno"
 
-export default class AlumnoBrowse extends React.Component {
+export default class AlumnoBrowser extends React.Component {
   constructor() {
     super();
     this.state = {

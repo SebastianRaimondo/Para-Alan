@@ -1,12 +1,14 @@
 import React from "react";
 import { Form, FormGroup, Label, Input, Button, ButtonGroup } from "reactstrap";
 import { Link } from "react-router-dom";
-import api from "../../components/api/apiRar";
+import api from "../Api/apiRar";
+import { FaCheck} from 'react-icons/fa';
+import { FaTimes } from 'react-icons/fa';
 
-export default class EditAlumnoFormB extends React.Component {
+export default class NuevoAlumnoForm extends React.Component {
   constructor(props) {
     super(props);
-
+    this.clean = this.clean.bind(this);
     this.state = {
       nombre: "",
       apellido: "",
@@ -16,16 +18,14 @@ export default class EditAlumnoFormB extends React.Component {
     };
   }
 
-  accept() {
-    api.editAlu(this.props.match.params.id, this.state, () =>
-      this.props.history.push("/")
-    );
-  }
+  clean(){
+    this.setState(state=>{state.nombre= ""; state.apellido="";state.nLegajo="";state.email="";state.userGit=""});
+    this.props.onCollapse();
+  
+   }
 
-  componentDidMount() {
-    api.getAlu(this.props.match.params.id).then(res => {
-      this.setState(res.data);
-    });
+  accept() {
+    api.createAlu(this.state, ()=> this.props.addFn());
   }
 
   render() {
@@ -80,14 +80,14 @@ export default class EditAlumnoFormB extends React.Component {
         </FormGroup>
 
         <ButtonGroup>
-          <Button className="Edit-Button" onClick={() => this.accept()}>
-            Ok
+          <Button className="Edit-Button" size="sm" color="success" onClick={() => this.accept()}>
+           <FaCheck/>
           </Button>
         </ButtonGroup>
         <ButtonGroup>
           <Link to="/">
-            <Button className="Cancell-Button" color="danger">
-              Cancel
+          <Button className="Cancell-Button"  size="sm" color="danger" onClick={() => this.clean()}>
+              <FaTimes/>
             </Button>
           </Link>
         </ButtonGroup>

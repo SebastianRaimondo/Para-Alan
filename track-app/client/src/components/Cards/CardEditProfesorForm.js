@@ -1,18 +1,20 @@
 import React from "react";
 import { Card, CardImg, CardBody } from "reactstrap";
-import AlumnoBrowse from "../AlumnoBrowse/AlumnoBrowse";
+import EditProfesorForm from "../Forms/EditProfesorForm";
 
-const CardAlumnosAsignadosBrowse = props => {
+const CardEditProfesorForm = props => {
+  console.log(props);
+
   return (
     <div>
       <Card>
         <CardImg top width="100%" />
         <CardBody>
-          <AlumnoBrowse />
+          <EditProfesorForm {...props} />
         </CardBody>
       </Card>
     </div>
   );
 };
 
-export default CardAlumnosAsignadosBrowse;
+export default CardEditProfesorForm;

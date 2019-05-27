@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Collapse, Button} from 'reactstrap';
-import CardAlumnoForm from "../Card/CardAlumnoForm"
-import { FaUserPlus } from 'react-icons/fa';
+import { FaEdit } from 'react-icons/fa';
+import CardEditAlumnoForm from "../Cards/CardEditAlumnoForm"
 
-class NuevoAlumno extends Component {
+class EditarAlumno extends Component {
   constructor(props) {
     super(props);
     this.toggle = this.toggle.bind(this);
@@ -16,18 +16,16 @@ class NuevoAlumno extends Component {
   }
 
 
- 
-
   render() {
     return (
       <div>
-        <Button color="primary" size="sm" onClick={this.toggle}   style={{ marginBottom: '1rem' }}><FaUserPlus/></Button>
+        <Button color="primary" size="sm" onClick={this.toggle}><FaEdit/></Button>
         <Collapse isOpen={this.state.collapse}>
-      <CardAlumnoForm {...this.props} onCollapse={()=> this.toggle()} />
+      <CardEditAlumnoForm {...this.props} onCollapse={()=> this.toggle()} />
         </Collapse>
       </div>
     );
   }
 }
 
-export default NuevoAlumno;
+export default EditarAlumno;

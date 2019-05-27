@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, CardImg, CardBody } from "reactstrap";
-import AlumnoBrowse from "../AlumnoBrowse/AlumnoBrowse";
+import AlumnoBrowser from "../Browsers/AlumnoBrowser";
 
 const CardAlumnoBrowse = props => {
   return (
@@ -8,7 +8,7 @@ const CardAlumnoBrowse = props => {
       <Card>
         <CardImg top width="100%" />
         <CardBody>
-          <AlumnoBrowse />
+          <AlumnoBrowser />
         </CardBody>
       </Card>
     </div>

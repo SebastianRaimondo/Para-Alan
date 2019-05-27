@@ -1,14 +1,13 @@
 import React from "react";
 import { Form, FormGroup, Label, Input, Button, ButtonGroup } from "reactstrap";
-import { Link } from "react-router-dom";
-import api from "../../components/api/apiRar";
+import api from "../Api/apiRar";
 import { FaCheck} from 'react-icons/fa';
 import { FaTimes } from 'react-icons/fa';
 
-export default class NuevoAlumnoForm extends React.Component {
+export default class EditAlumnoForm extends React.Component {
   constructor(props) {
     super(props);
-    this.clean = this.clean.bind(this);
+
     this.state = {
       nombre: "",
       apellido: "",
@@ -17,17 +16,23 @@ export default class NuevoAlumnoForm extends React.Component {
       userGit: ""
     };
   }
-
-  clean(){
-    this.setState(state=>{state.nombre= ""; state.apellido="";state.nLegajo="";state.email="";state.userGit=""});
-    this.props.onCollapse();
   
+  cancell(){ 
+    this.props.onCollapse();
    }
 
   accept() {
-    api.createAlu(this.state, ()=> this.props.addFn());
+    api.editAlu(this.props.id, this.state,this.props.cbAdd
+    )
   }
 
+  componentWillReceiveProps() {
+    api.getAlu(this.props.id).then(res => {
+      this.setState(res.data);
+    });
+  }
+
+  
   render() {
     return (
       <Form>
@@ -80,16 +85,14 @@ export default class NuevoAlumnoForm extends React.Component {
         </FormGroup>
 
         <ButtonGroup>
-          <Button className="Edit-Button" size="sm" color="success" onClick={() => this.accept()}>
-           <FaCheck/>
+          <Button className="Edit-Button"  color="success" size="sm" onClick={() => this.accept()}>
+            <FaCheck/>
           </Button>
         </ButtonGroup>
         <ButtonGroup>
-          <Link to="/">
-          <Button className="Cancell-Button"  size="sm" color="danger" onClick={() => this.clean()}>
+        <Button className="Cancell-Button" size="sm" color="danger" onClick={() => this.cancell()}>
               <FaTimes/>
             </Button>
-          </Link>
         </ButtonGroup>
       </Form>
     );

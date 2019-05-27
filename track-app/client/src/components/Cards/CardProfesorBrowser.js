@@ -1,20 +1,18 @@
 import React from "react";
 import { Card, CardImg, CardBody } from "reactstrap";
-import EditProfesorForm from "../EditProfesorForm/EditProfesorFrom";
+import ProfesorBrowser from "../Browsers/ProfesorBrowser";
 
-const CardEditProfesorForm = props => {
-  console.log(props);
-
+const CardProfesorBrowse = props => {
   return (
     <div>
       <Card>
         <CardImg top width="100%" />
         <CardBody>
-          <EditProfesorForm {...props} />
+          <ProfesorBrowser />
         </CardBody>
       </Card>
     </div>
   );
 };
 
-export default CardEditProfesorForm;
+export default CardProfesorBrowse;

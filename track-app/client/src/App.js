@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
 import Route from "react-router-dom/Route";
 import { Row } from "reactstrap";
-import Pestañas from "./Components2/Pestañas/Pestañas"
-import ProfesorBrowse from "./Components2/ProfesroBrowse/ProfesorBrowse"
+import Pestañas from "./Components/Pestañas/Pestañas"
+import ProfesorBrowse from "./Components/Browsers/ProfesorBrowser"
 
 import "./App.css";
 
