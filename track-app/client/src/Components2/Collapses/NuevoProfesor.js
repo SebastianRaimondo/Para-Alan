@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Collapse, Button, CardBody, Card } from 'reactstrap';
+import { Collapse, Button} from 'reactstrap';
 import { FaUserPlus } from 'react-icons/fa';
-import NuevoProfesorForm from "../Forms/NuevoProfesorForm"
 import CardNuevoProfesorForm from "../Card/CardNuevoProfesorForm"
 
 

@@ -1,11 +1,8 @@
 import React from 'react';
-import { TabContent, TabPane, Nav, NavItem, NavLink, Card, Button, CardTitle, CardText, Row, Col } from 'reactstrap';
+import { TabContent, TabPane, Nav, NavItem, NavLink, Row, Col } from 'reactstrap';
 import classnames from 'classnames';
 import CardProfesorBrowse from "../Card/CardProfesorBrowse"
 import CardAlumnoBrowse from "../Card/CardAlumnoBrowse"
-import NuevoProfesorForm from "../Forms/NuevoProfesorForm"
-
-
 
 export default class Pestañas extends React.Component {
   constructor(props) {

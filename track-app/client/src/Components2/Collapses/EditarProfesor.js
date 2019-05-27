@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Collapse, Button, CardBody, Card } from 'reactstrap';
+import { Collapse, Button} from 'reactstrap';
 import CardEditProfesorForm from "../Card/CardEditProfesorForm"
 import { FaEdit } from 'react-icons/fa';
 
