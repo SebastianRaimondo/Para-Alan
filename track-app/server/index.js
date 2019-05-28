@@ -18,6 +18,7 @@ app.use(resStatus());
 // Routes
 app.use("/api/alumnos", require("./routes/alu.routes"));
 app.use("/api/profesores", require("./routes/prof.routes"));
+app.use("/api/cursos", require("./routes/curso.routes"));
 
 // starting the server
 app.listen(app.get("port"), () => {

@@ -6,7 +6,8 @@ const alumnoSchema = new Schema({
   apellido: { type: String },
   nLegajo: { type: Number },
   email: { type: String },
-  userGit: { type: String }
+  userGit: { type: String },
+  pAsignados: { type: String }
 });
 
 module.exports = mongoose.model("Alu", alumnoSchema);

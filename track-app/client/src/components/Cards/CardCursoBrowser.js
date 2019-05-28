@@ -1,18 +1,18 @@
 import React from "react";
 import { Card, CardImg, CardBody } from "reactstrap";
-import AlumnoBrowser from "../Browsers/AlumnoBrowser";
+import CursoBrowser from "../Browsers/CursoBrowser";
 
-const CardAlumnoBrowser = props => {
+const CardCursoBrowser = props => {
   return (
     <div>
       <Card>
         <CardImg top width="100%" />
         <CardBody>
-          <AlumnoBrowser />
+          <CursoBrowser/>
         </CardBody>
       </Card>
     </div>
   );
 };
 
-export default CardAlumnoBrowser;
+export default CardCursoBrowser;
