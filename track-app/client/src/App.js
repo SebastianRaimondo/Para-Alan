@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Switch } from "react-router-dom";
 import Route from "react-router-dom/Route";
 import { Row } from "reactstrap";
 import Pestañas from "./Components/Pestañas/Pestañas"
-import ProfesorBrowse from "./Components/Browsers/ProfesorBrowser"
+import Curso from "./Components/Curso/Curso"
+
 
 import "./App.css";
 
@@ -27,7 +28,7 @@ class App extends Component {
                     path="/prueba"
                     exact
                     strict
-                    component={ProfesorBrowse}
+                    component={Curso}
                   />
                 </Switch>
               </Row>

@@ -22,7 +22,10 @@ cursoCtrl.createCurso = async (req, res, next) => {
       sede: req.body.sede,
       dias: req.body.dias,
       cuatrimestre: req.body.cuatrimestre,
-      anio: req.body.anio
+      anio: req.body.anio,
+      alumnos: req.body.alumnos,
+      profesores: req.body.profesores
+
     });
     await curso.save();
     res.created(curso);
@@ -53,7 +56,9 @@ cursoCtrl.editCurso = async (req, res, next) => {
           sede: req.body.sede,
           dias: req.body.dias,
           cuatrimestre: req.body.cuatrimestre,
-          anio: req.body.anio
+          anio: req.body.anio,
+          alumnos: req.body.alumnos,
+          profesores: req.body.profesores
         }
       }
     );

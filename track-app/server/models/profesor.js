@@ -8,3 +8,4 @@ const profesorSchema = new Schema({
 });
 
 module.exports = mongoose.model("Prof", profesorSchema);
+module.exports 

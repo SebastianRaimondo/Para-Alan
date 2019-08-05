@@ -19,7 +19,7 @@ class AlumnoRow extends Component {
           <td>
           
             <ButtonGroup>
-            <EditarAlumno {...this.props} />
+              <EditarAlumno {...this.props} />
               <Button
                 className="Delete-Button"
                 color="danger"
