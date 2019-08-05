@@ -15,11 +15,7 @@ const options = [
   
 ];
 
-const cuchuflo =[];
 
-
-
-console.log(cuchuflo)
 
 class KeyPad extends Component {
   state = {
@@ -28,12 +24,15 @@ class KeyPad extends Component {
   };
 
 
-
+ fillOptionsArray(value,label){
+    options.push({value:value, label:label});
+ }
 
   componentDidMount() {
     api.getAlumumnos().
       then(res => this.setState({ data: res.data })).
-         then(()=> {this.state.data.forEach((alum) =>  {options.push({value: alum.nombre +" " +alum.apellido, label: alum.nombre + " " +alum.apellido })})});
+         then(()=> {this.state.data.forEach((alum) => {
+           this.fillOptionsArray(alum.nombre + " " + alum.apellido,alum.nombre + " " + alum.apellido)})});
   }
 
   onChange = selected => {
@@ -45,7 +44,6 @@ class KeyPad extends Component {
     const { selected } = this.state;
  
     console.log(this.state.data);
-   // console.log(options[0].label);
     console.log(options);
     console.log(this.state.selected);
     return (
