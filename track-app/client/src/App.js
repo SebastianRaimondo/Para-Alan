@@ -4,6 +4,7 @@ import Route from "react-router-dom/Route";
 import { Row } from "reactstrap";
 import Pestañas from "./Components/Pestañas/Pestañas"
 import Curso from "./Components/Curso/Curso"
+import CardNuevoCursoForm from "./Components/Cards/CardNuevoCursoForm"
 
 
 import "./App.css";
@@ -29,6 +30,12 @@ class App extends Component {
                     exact
                     strict
                     component={Curso}
+                  />
+                  <Route
+                    path="/prueba2"
+                    exact
+                    strict
+                    component={CardNuevoCursoForm}
                   />
                 </Switch>
               </Row>

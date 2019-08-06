@@ -3,6 +3,7 @@ import { Table } from "reactstrap";
 import { Button } from "reactstrap";
 import api from "../Api/apiRar";
 import CursoRow from "../Rows/CursoRow";
+import NuevoCurso from "../Collapses/NuevoCurso"
 
 export default class CursoBrowser extends React.Component {
   constructor() {
@@ -32,10 +33,7 @@ export default class CursoBrowser extends React.Component {
       <Table>
         <thead>
           <div>
-            <Button margin="left" color="primary">
-              {" "}
-              Crear un curso
-            </Button>
+          <th> <NuevoCurso addFn={()=> this.add()}/></th>
           </div>
 
           <tr>
