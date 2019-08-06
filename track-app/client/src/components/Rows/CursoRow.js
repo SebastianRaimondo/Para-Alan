@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Button, ButtonGroup } from "reactstrap";
 import EditarCurso from "../Collapses/EditarCurso"
-import { FaTrash } from 'react-icons/fa';
+import {FaArrowAltCircleRight, FaTrash } from 'react-icons/fa';
 
 
 
@@ -36,6 +36,25 @@ class CursoRow extends Component {
                 <FaTrash />
                
               </Button>
+
+
+              <Button
+                className="Delete-Button"
+                color="primary"
+                size="sm"
+                onClick={e => {
+                  if (
+                    window.confirm(
+                      "¿Esta seguro que desea eliminar este curso?"
+                    )
+                  )
+                  this.props.callbackFn(this.props.id);;
+                }}
+              >
+               <FaArrowAltCircleRight/>
+               
+              </Button>
+
             </ButtonGroup>
           </td>
         </tr>
