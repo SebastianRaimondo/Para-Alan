@@ -54,12 +54,12 @@ function getProfesores() {
 
 
 function getCurso(id) {
-  return axios.get("http://localhost:3001/api/curso/" + id);
+  return axios.get("http://localhost:3001/api/cursos/" + id);
 }
 
 function editCurso(id, aluInfo, cb) {
   axios
-    .put("http://localhost:3001/api/curso/" + id, aluInfo)
+    .put("http://localhost:3001/api/cursos/" + id, aluInfo)
     .then(() => cb());
 }
 

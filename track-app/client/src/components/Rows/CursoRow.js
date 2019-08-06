@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Button, ButtonGroup } from "reactstrap";
-import EditarAlumno from "../Collapses/EditarAlumno"
+import EditarCurso from "../Collapses/EditarCurso"
 import { FaTrash } from 'react-icons/fa';
 
 
@@ -19,7 +19,7 @@ class CursoRow extends Component {
           <td>
           
             <ButtonGroup>
-             
+            <EditarCurso {...this.props} />
               <Button
                 className="Delete-Button"
                 color="danger"
