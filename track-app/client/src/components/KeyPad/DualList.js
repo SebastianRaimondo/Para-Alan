@@ -19,7 +19,7 @@ const options = [
 
 class KeyPad extends Component {
   state = {
-    selected: [],
+    selectedAlum: [],
     data: [],
   };
 
@@ -35,17 +35,17 @@ class KeyPad extends Component {
            this.fillOptionsArray(alum.nombre + " " + alum.apellido,alum.nombre + " " + alum.apellido)})});
   }
 
-  onChange = selected => {
-    this.setState({ selected });
+  onChange = selectedAlum => {
+    this.setState({ selectedAlum });
   };
   
   render() {
 
-    const { selected } = this.state;
+    const { selectedAlum } = this.state;
  
     console.log(this.state.data);
     console.log(options);
-    console.log(this.state.selected);
+    console.log(this.state.selectedAlum);
     return (
       <div>
         <Alert color="dark">
@@ -65,7 +65,7 @@ class KeyPad extends Component {
         </Alert>
         <DualListBox
           options={options}
-          selected={selected}
+          selected={selectedAlum}
           onChange={this.onChange}
         />
       </div>

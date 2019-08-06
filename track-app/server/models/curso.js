@@ -7,6 +7,7 @@ const cursoSchema = new Schema({
   dias: { type: String },
   cuatrimestre: { type: String },
   anio: { type: Number },
+  alumnos: {type: []},
   prosfesores: {type: []}
 });
 

@@ -1,5 +1,8 @@
 const axios = require("axios");
 
+
+//Crud Alumnos
+
 function getAlu(id) {
   return axios.get("http://localhost:3001/api/alumnos/" + id);
 }
@@ -21,6 +24,9 @@ function deleteAlu(id, fn) {
 function getAlumumnos() {
   return axios.get("http://localhost:3001/api/alumnos");
 }
+
+
+//Crud Profesores
 
 function getProf(id) {
   return axios.get("http://localhost:3001/api/profesores/" + id);
@@ -44,6 +50,32 @@ function getProfesores() {
   return axios.get("http://localhost:3001/api/profesores");
 }
 
+//Crud Cursos
+
+
+function getCurso(id) {
+  return axios.get("http://localhost:3001/api/curso/" + id);
+}
+
+function editCurso(id, aluInfo, cb) {
+  axios
+    .put("http://localhost:3001/api/curso/" + id, aluInfo)
+    .then(() => cb());
+}
+
+function createCurso(alu, cb) {
+  axios.post("http://localhost:3001/api/cursos/", alu).then(() => {console.log("prueba api"); cb()});
+}
+
+function deleteCurso(id, fn) {
+  axios.delete("http://localhost:3001/api/cursos/" + id).then(() => fn());
+}
+
+function getCursos() {
+  return axios.get("http://localhost:3001/api/cursos");
+}
+
+
 export default {
   getAlumumnos,
   deleteAlu,
@@ -54,5 +86,11 @@ export default {
   editProf,
   createProf,
   deleteProf,
-  getProfesores
+  getProfesores,
+  getCursos,
+  editCurso,
+  createCurso,
+  deleteCurso,
+  getCurso
+
 };
