@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Button, ButtonGroup } from "reactstrap";
 import EditarCurso from "../Collapses/EditarCurso"
 import {FaArrowAltCircleRight, FaTrash } from 'react-icons/fa';
+import { Link } from "react-router-dom";
 
 
 
@@ -18,7 +19,7 @@ class CursoRow extends Component {
 
           <td>
           
-            <ButtonGroup>
+           
             <EditarCurso {...this.props} />
               <Button
                 className="Delete-Button"
@@ -38,24 +39,16 @@ class CursoRow extends Component {
               </Button>
 
 
-              <Button
-                className="Delete-Button"
-                color="primary"
-                size="sm"
-                onClick={e => {
-                  if (
-                    window.confirm(
-                      "¿Esta seguro que desea eliminar este curso?"
-                    )
-                  )
-                  this.props.callbackFn(this.props.id);;
-                }}
-              >
+              <Link
+              to={"/curso/" + this.props.id}
+              className="btn btn-info Edit-Button"
+              color="info"
+            >
                <FaArrowAltCircleRight/>
                
-              </Button>
+               </Link>
 
-            </ButtonGroup>
+        
           </td>
         </tr>
       </tbody>

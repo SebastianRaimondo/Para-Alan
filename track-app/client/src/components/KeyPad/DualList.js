@@ -19,7 +19,7 @@ const options = [
 
 class KeyPad extends Component {
   state = {
-    selectedAlum: [],
+    selectedAlum: ["5d48307622c165270c273c2d"],
     data: [],
   };
 
@@ -28,11 +28,14 @@ class KeyPad extends Component {
     options.push({value:value, label:label});
  }
 
+
+ 
+
   componentDidMount() {
     api.getAlumumnos().
       then(res => this.setState({ data: res.data })).
          then(()=> {this.state.data.forEach((alum) => {
-           this.fillOptionsArray(alum.nombre + " " + alum.apellido,alum.nombre + " " + alum.apellido)})});
+           this.fillOptionsArray(alum._id,alum.nombre + " " + alum.apellido)})});
   }
 
   onChange = selectedAlum => {

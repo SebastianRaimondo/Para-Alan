@@ -5,6 +5,8 @@ import { Row } from "reactstrap";
 import Pestañas from "./Components/Pestañas/Pestañas"
 import Curso from "./Components/Curso/Curso"
 import CardNuevoCursoForm from "./Components/Cards/CardNuevoCursoForm"
+import Pingo from "./ParaProbar/ListaDoble"
+
 
 
 import "./App.css";
@@ -26,7 +28,7 @@ class App extends Component {
                      component={Pestañas} />
                  
                   <Route
-                    path="/prueba"
+                    path="/curso/:id"
                     exact
                     strict
                     component={Curso}
@@ -35,7 +37,7 @@ class App extends Component {
                     path="/prueba2"
                     exact
                     strict
-                    component={CardNuevoCursoForm}
+                    component={Pingo}
                   />
                 </Switch>
               </Row>
