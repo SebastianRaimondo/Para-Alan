@@ -2,12 +2,14 @@ import React, { Component } from "react";
 import AdminAlumno from "../Collapses/AdminAlumno"
 import { Container, Row, Col } from 'reactstrap';
 import api from "../Api/apiRar"
+import AlertCurso from "../AlertCurso/AlertCurso"
+
+
+
+
 class Curso extends Component{
-
-
-  constructor(props) {
-    super(props);
-
+  constructor() {
+    super();
     this.state = {
       data: []
     };
@@ -18,7 +20,7 @@ class Curso extends Component{
   componentDidMount() {
 
     api.getCurso(this.props.match.params.id).then(res => {
-      this.setState({data:res.data})
+      this.setState({data: res.data})
     });
   }
 
@@ -26,13 +28,31 @@ class Curso extends Component{
 
 render(){
 
-console.log(this.state)
+  const { data } = this.state
+
 
 return(
-
 <Container>
+
     <Row>
+
         <Col>
+
+
+        <AlertCurso
+ 
+ materia={data.materia}
+ sede={data.sede}
+ dias={data.dias}
+ cuatrimestre={data.cuatrimestre}
+ anio={data.anio}
+ id={data._id}
+ 
+/>
+
+
+
+
 <AdminAlumno/>
 </Col>
 </Row>
