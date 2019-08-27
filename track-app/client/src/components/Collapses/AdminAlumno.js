@@ -20,7 +20,7 @@ class AdminAlumno extends Component {
       <div>
         <Button color="primary" size="slg" block onClick={this.toggle}><h5>Alumnos</h5></Button>
         <Collapse isOpen={this.state.collapse}>
-      <DualList />
+      <DualList {...this.props}/>
       
         </Collapse>
       </div>

@@ -46,9 +46,8 @@ class KeyPad extends Component {
 
     const { selectedAlum } = this.state;
  
-    console.log(this.state.data);
-    console.log(options);
-    console.log(this.state.selectedAlum);
+    console.log(this.props.idCurso);
+   
     return (
       <div>
         <Alert color="dark">

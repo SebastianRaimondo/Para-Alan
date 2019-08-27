@@ -57,14 +57,14 @@ function getCurso(id) {
   return axios.get("http://localhost:3001/api/cursos/" + id);
 }
 
-function editCurso(id, aluInfo, cb) {
+function editCurso(id, cursoInfo, cb) {
   axios
-    .put("http://localhost:3001/api/cursos/" + id, aluInfo)
+    .put("http://localhost:3001/api/cursos/" + id, cursoInfo)
     .then(() => cb());
 }
 
-function createCurso(alu, cb) {
-  axios.post("http://localhost:3001/api/cursos/", alu).then(() => {console.log("prueba api"); cb()});
+function createCurso(curso, cb) {
+  axios.post("http://localhost:3001/api/cursos/", curso).then(() => {console.log("prueba api"); cb()});
 }
 
 function deleteCurso(id, fn) {

@@ -5,7 +5,7 @@ import { Row } from "reactstrap";
 import Pestañas from "./Components/Pestañas/Pestañas"
 import Curso from "./Components/Curso/Curso"
 import CardNuevoCursoForm from "./Components/Cards/CardNuevoCursoForm"
-import Pingo from "./ParaProbar/ListaDoble"
+import DualList from "./Components/KeyPad/DualList"
 
 
 
@@ -37,7 +37,7 @@ class App extends Component {
                     path="/prueba2"
                     exact
                     strict
-                    component={Pingo}
+                    component={DualList}
                   />
                 </Switch>
               </Row>
