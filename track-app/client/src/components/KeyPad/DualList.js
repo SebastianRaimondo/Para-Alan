@@ -24,6 +24,7 @@ class KeyPad extends Component {
   constructor(props) {
     super(props);
     this.state = {
+    data: [],
     selectedAlum: [],
     alumnosDelCurso: []
   
@@ -32,16 +33,18 @@ class KeyPad extends Component {
 
  fillOptionsArray(value,label){
     options.push({value:value, label:label});
-  // this.state.alumnosDelCurso.push(value)
  }
 
 
- 
+ componentWillMount(){
+   this.state.selectedAlum = this.props.alumnos
+ }
 
   componentDidMount() { 
-    this.props.alumnos.forEach(e => {
-      api.getAlu(e).then(res => this.fillOptionsArray(res.data._id, res.data.nombre + " " + res.data.apellido ))
-    });
+    api.getAlumumnos().
+      then(res => this.setState({ data: res.data })).
+         then(()=> {this.state.data.forEach((alum) => 
+           {options.push({value: alum._id , label: alum.nombre + " " +alum.apellido })})});
   }
 
 
