@@ -19,7 +19,10 @@ class AlumnoRow extends Component {
           <td>
           
             <ButtonGroup>
+              
               <EditarAlumno {...this.props} />
+            
+              <div>
               <Button
                 className="Delete-Button"
                 color="danger"
@@ -36,6 +39,7 @@ class AlumnoRow extends Component {
                 <FaTrash />
                
               </Button>
+              </div>
             </ButtonGroup>
           </td>
         </tr>

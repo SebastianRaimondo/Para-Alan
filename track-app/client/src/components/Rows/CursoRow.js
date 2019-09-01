@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button} from "reactstrap";
+import { Button,ButtonGroup} from "reactstrap";
 import EditarCurso from "../Collapses/EditarCurso"
 import {FaArrowAltCircleRight, FaTrash } from 'react-icons/fa';
 import { Link } from "react-router-dom";
@@ -19,8 +19,9 @@ class CursoRow extends Component {
 
           <td>
           
-           
+          <ButtonGroup> 
             <EditarCurso {...this.props} />
+            <div>
               <Button
                 className="Delete-Button"
                 color="danger"
@@ -35,20 +36,23 @@ class CursoRow extends Component {
                 }}
               >
                 <FaTrash />
-               
+             
               </Button>
 
-
+              </div>
+              <div>
               <Link
+              
               to={"/curso/" + this.props.id}
-              className="btn btn-info Edit-Button"
+              className="btn btn-info Edit-Button btn-sm"
               color="info"
+              
             >
                <FaArrowAltCircleRight/>
                
                </Link>
-
-        
+               </div>
+               </ButtonGroup>
           </td>
         </tr>
       </tbody>

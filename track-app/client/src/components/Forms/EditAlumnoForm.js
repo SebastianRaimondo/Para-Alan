@@ -85,7 +85,7 @@ export default class EditAlumnoForm extends React.Component {
         </FormGroup>
 
         <ButtonGroup>
-          <Button className="Edit-Button"  color="success" size="sm" onClick={() => {this.accept(); this.props.onCollapse();}}>
+          <Button className="Edit-Button"  color="success" size="sm" onClick={() => {this.accept(); this.props.onCollapse()}}>
             <FaCheck/>
           </Button>
         </ButtonGroup>
