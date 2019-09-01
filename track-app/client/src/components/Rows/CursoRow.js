@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Button, ButtonGroup } from "reactstrap";
+import { Button} from "reactstrap";
 import EditarCurso from "../Collapses/EditarCurso"
 import {FaArrowAltCircleRight, FaTrash } from 'react-icons/fa';
 import { Link } from "react-router-dom";

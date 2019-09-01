@@ -80,7 +80,7 @@ export default class NuevoCursoForm extends React.Component {
         </FormGroup>
 
         <ButtonGroup>
-          <Button className="Edit-Button" size="sm" color="success" onClick={() => this.accept()}>
+          <Button className="Edit-Button" size="sm" color="success" onClick={() => {this.accept(); this.props.onCollapse();}}>
            <FaCheck/>
           </Button>
         </ButtonGroup>

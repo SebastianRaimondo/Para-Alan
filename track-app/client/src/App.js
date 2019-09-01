@@ -4,7 +4,6 @@ import Route from "react-router-dom/Route";
 import { Row } from "reactstrap";
 import Pestañas from "./Components/Pestañas/Pestañas"
 import Curso from "./Components/Curso/Curso"
-import CardNuevoCursoForm from "./Components/Cards/CardNuevoCursoForm"
 import DualList from "./Components/KeyPad/DualList"
 
 

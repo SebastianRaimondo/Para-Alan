@@ -3,7 +3,9 @@ import { Alert,Row,Col,Container } from "reactstrap";
 import DualListBox from "react-dual-listbox"
 import "react-dual-listbox/lib/react-dual-listbox.css"
 import "font-awesome/css/font-awesome.min.css"
-import api from "../Api/apiRar";
+import api from "../Api/apiRar"
+
+
 
 
 
@@ -18,11 +20,16 @@ const options = [
 
 
 class KeyPad extends Component {
-  state = {
+
+  constructor(props) {
+    super(props);
+    console.log(props)
+    
+    this.state = {
     selectedAlum: ["5d48307622c165270c273c2d"],
     data: [],
   };
-
+  }
 
  fillOptionsArray(value,label){
     options.push({value:value, label:label});
@@ -31,12 +38,10 @@ class KeyPad extends Component {
 
  
 
-  componentDidMount() {
-    api.getAlumumnos().
-      then(res => this.setState({ data: res.data })).
-         then(()=> {this.state.data.forEach((alum) => {
-           this.fillOptionsArray(alum._id,alum.nombre + " " + alum.apellido)})});
-  }
+  componentDidMount() { 
+  api.getCurso(this.props.idCurso).then(res => this.setState({data: res.data}));
+}
+
 
   onChange = selectedAlum => {
     this.setState({ selectedAlum });
@@ -44,10 +49,14 @@ class KeyPad extends Component {
   
   render() {
 
+
+const {data} = this.state
+console.log(data)
+
     const { selectedAlum } = this.state;
- 
-    console.log(this.props.idCurso);
-   
+
+
+
     return (
       <div>
         <Alert color="dark">
