@@ -6,30 +6,18 @@ import "font-awesome/css/font-awesome.min.css"
 import api from "../Api/apiRar"
 
 
+const options = [];
 
 
-
-
-
-const options = [
- // { value: "Pedro Anido", label: "Pedro Anido" },
- // { value: "Enana Flansilla", label: "Enana Flansilla" }
-  
-];
-
-
-
-class KeyPad extends Component {
+class DualListAlumno extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
     data: [],
-    selectedAlum: [],
-    alumnosDelCurso: []
-  
+    selectedAlum: []
   };
-  }
+}
 
  fillOptionsArray(value,label){
     options.push({value:value, label:label});
@@ -37,46 +25,23 @@ class KeyPad extends Component {
 
 
  componentWillMount(){
-   this.state.selectedAlum = this.props.alumnos
+   this.setState({selectedAlum : this.props.alumnos})
  }
 
   componentDidMount() { 
-    api.getAlumumnos().
-      then(res => this.setState({ data: res.data })).
-         then(()=> {this.state.data.forEach((alum) => 
+    api.getAlumumnos().then(res => this.setState({ data: res.data })).then(()=> {this.state.data.forEach((alum) => 
            {options.push({value: alum._id , label: alum.nombre + " " +alum.apellido })})});
   }
 
-
-modify(){
-
-  api.editCurso(this.props.id, 
-    {"materia" : this.props.materia,
-     "sede" : this.props.sede,
-      "anio" : this.props.anio, 
-      "dias" : this.props.dias,
-      "cuatrimestre" : this.props.cuatrimestre, 
-     "alumnos" : this.state.selectedAlum })
-}
 
   onChange = selectedAlum => {
     this.setState({ selectedAlum });
   };
   
   render() {
-const {alumnosDelCurso} = this.state
+
 const { selectedAlum } = this.state;
-
-console.log(this.props) 
-console.log(alumnosDelCurso)
 console.log(selectedAlum)
-
-
-  
- 
-
-
-
     return (
       <div>
         <Alert color="dark">
@@ -94,17 +59,19 @@ console.log(selectedAlum)
          </Row>
          </Container>
         </Alert>
+        
+        <Button color="success" size="md"   onClick={() => {this.props.cbFnAlu(this.state.selectedAlum); this.props.onCollapse()}}>Aceptar</Button>
+     
         <DualListBox
           options={options}
           selected={selectedAlum}
           onChange={this.onChange}
         />
         
-<Button color="success" size="md"   onClick={() => {this.modify(); this.props.onCollapse()}}>Aceptar</Button>
 
       </div>
     );
   }
 }
 
-export default KeyPad;
+export default DualListAlumno;

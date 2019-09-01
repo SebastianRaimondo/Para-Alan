@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import AdminAlumno from "../Collapses/AdminAlumno";
+import AdminProfesor from "../Collapses/AdminProfesor"
 import { Container, Row, Col } from "reactstrap";
 import api from "../Api/apiRar";
 import AlertCurso from "../Alerts/AlertCurso/AlertCurso";
@@ -10,13 +11,7 @@ class Curso extends Component {
   constructor() {
     super();
     this.state = {
-      materia: "",
-      sede: "",
-      dias: "",
-      cuatrimestre: "",
-      anio: "",
-      alumnos: [],
-
+     
       data: []
     };
   }
@@ -24,9 +19,35 @@ class Curso extends Component {
   componentDidMount() {
     api.getCurso(this.props.match.params.id).then(res => {
       this.setState({ data: res.data });
+
     
     });
   }
+
+  modifyAlu(alumnos){
+
+    api.editCurso(this.state.data._id, 
+      {"materia" : this.state.data.materia,
+       "sede" : this.state.data.sede,
+        "anio" : this.state.data.anio, 
+        "dias" : this.state.data.dias,
+        "cuatrimestre" : this.state.data.cuatrimestre,
+        "profesores" : this.state.data.profesores,
+       "alumnos" : alumnos })
+  }
+
+  modifyProf(profesores){
+
+    api.editCurso(this.state.data._id, 
+      {"materia" : this.state.data.materia,
+       "sede" : this.state.data.sede,
+        "anio" : this.state.data.anio, 
+        "dias" : this.state.data.dias,
+        "cuatrimestre" : this.state.data.cuatrimestre,
+        "profesores" : profesores,
+       "alumnos" : this.state.data.alumnos })
+  }
+
 
   render() {
     const { data } = this.state;
@@ -44,13 +65,18 @@ class Curso extends Component {
                 anio={data.anio}
               />
               <AdminAlumno
-               materia={data.materia}
-               sede={data.sede}
-               dias={data.dias}
-               cuatrimestre={data.cuatrimestre}
-               anio={data.anio}
                id={data._id}
-               alumnos={data.alumnos} />
+               cbFnAlu= { alu => this.modifyAlu(alu)}
+               alumnos = {data.alumnos}
+               />
+
+
+           <AdminProfesor
+             id={data._id}
+             cbFnProf= { prof => this.modifyProf(prof)}
+             profesores = {data.profesores}
+           />
+
             </Col>
           </Row>
         </Container>

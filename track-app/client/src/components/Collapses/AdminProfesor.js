@@ -1,8 +1,8 @@
 import { Collapse, Button} from 'reactstrap';
 import React, { Component } from 'react';
-import DualListAlumno from "../KeyPad/DualListAlumno"
+import DualListProfesor from "../KeyPad/DualListProfesor"
 
-class AdminAlumno extends Component {
+class AdminProfesor extends Component {
   constructor(props) {
     super(props);
     this.toggle = this.toggle.bind(this);
@@ -19,9 +19,9 @@ class AdminAlumno extends Component {
 
     return (
       <div>
-        <Button color="primary" size="slg" block onClick={this.toggle}><h5>Alumnos</h5></Button>
+        <Button color="primary" size="slg" block onClick={this.toggle}><h5>Profesores</h5></Button>
         <Collapse isOpen={this.state.collapse}>
-      <DualListAlumno {...this.props} onCollapse={()=> this.toggle()}/>
+      <DualListProfesor {...this.props} onCollapse={()=> this.toggle()}/>
       
         </Collapse>
       </div>
@@ -29,4 +29,4 @@ class AdminAlumno extends Component {
   }
 }
 
-export default AdminAlumno;
+export default AdminProfesor;

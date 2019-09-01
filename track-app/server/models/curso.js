@@ -8,7 +8,7 @@ const cursoSchema = new Schema({
   cuatrimestre: { type: String },
   anio: { type: Number },
   alumnos: {type: []},
-  prosfesores: {type: []}
+  profesores: {type: []}
 });
 
 module.exports = mongoose.model("Curso", cursoSchema);

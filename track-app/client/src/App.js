@@ -4,10 +4,6 @@ import Route from "react-router-dom/Route";
 import { Row } from "reactstrap";
 import Pestañas from "./Components/Pestañas/Pestañas"
 import Curso from "./Components/Curso/Curso"
-import DualList from "./Components/KeyPad/DualList"
-
-
-
 import "./App.css";
 
 
@@ -32,12 +28,7 @@ class App extends Component {
                     strict
                     component={Curso}
                   />
-                  <Route
-                    path="/prueba2"
-                    exact
-                    strict
-                    component={DualList}
-                  />
+                 
                 </Switch>
               </Row>
             </div>
