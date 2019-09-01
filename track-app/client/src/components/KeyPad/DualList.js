@@ -12,8 +12,8 @@ import api from "../Api/apiRar"
 
 
 const options = [
-//  { value: "Pedro Anido", label: "Pedro Anido" },
-//  { value: "Enana Flansilla", label: "Enana Flansilla" }
+ // { value: "Pedro Anido", label: "Pedro Anido" },
+ // { value: "Enana Flansilla", label: "Enana Flansilla" }
   
 ];
 
@@ -23,24 +23,26 @@ class KeyPad extends Component {
 
   constructor(props) {
     super(props);
-    console.log(props)
-    
     this.state = {
-    selectedAlum: ["5d48307622c165270c273c2d"],
-    data: [],
+    selectedAlum: [],
+    alumnosDelCurso: []
+  
   };
   }
 
  fillOptionsArray(value,label){
     options.push({value:value, label:label});
+  // this.state.alumnosDelCurso.push(value)
  }
 
 
  
 
   componentDidMount() { 
-  api.getCurso(this.props.idCurso).then(res => this.setState({data: res.data}));
-}
+    this.props.alumnos.forEach(e => {
+      api.getAlu(e).then(res => this.fillOptionsArray(res.data._id, res.data.nombre + " " + res.data.apellido ))
+    });
+  }
 
 
   onChange = selectedAlum => {
@@ -48,12 +50,16 @@ class KeyPad extends Component {
   };
   
   render() {
+const {alumnosDelCurso} = this.state
+const { selectedAlum } = this.state;
+
+console.log(this.props) 
+console.log(alumnosDelCurso)
+console.log(selectedAlum)
 
 
-const {data} = this.state
-console.log(data)
-
-    const { selectedAlum } = this.state;
+  
+ 
 
 
 

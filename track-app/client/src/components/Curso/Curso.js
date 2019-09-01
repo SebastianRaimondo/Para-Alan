@@ -24,14 +24,12 @@ class Curso extends Component {
   componentDidMount() {
     api.getCurso(this.props.match.params.id).then(res => {
       this.setState({ data: res.data });
-      console.log("component did mount");
+    
     });
   }
 
   render() {
     const { data } = this.state;
-    console.log(data);
-    console.log("soy el curso y me renderize, viva waldo");
 
     if (data._id !== undefined) {
       return (
@@ -46,7 +44,8 @@ class Curso extends Component {
                 anio={data.anio}
                 id={data._id}
               />
-              <AdminAlumno idCurso={data._id} />
+              <AdminAlumno
+               alumnos={data.alumnos} />
             </Col>
           </Row>
         </Container>
