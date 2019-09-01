@@ -100,7 +100,7 @@ console.log(selectedAlum)
           onChange={this.onChange}
         />
         
-<Button color="success" size="md"   onClick={() => this.modify()}>Aceptar</Button>
+<Button color="success" size="md"   onClick={() => {this.modify(); this.props.onCollapse()}}>Aceptar</Button>
 
       </div>
     );
