@@ -42,9 +42,14 @@ class Curso extends Component {
                 dias={data.dias}
                 cuatrimestre={data.cuatrimestre}
                 anio={data.anio}
-                id={data._id}
               />
               <AdminAlumno
+               materia={data.materia}
+               sede={data.sede}
+               dias={data.dias}
+               cuatrimestre={data.cuatrimestre}
+               anio={data.anio}
+               id={data._id}
                alumnos={data.alumnos} />
             </Col>
           </Row>

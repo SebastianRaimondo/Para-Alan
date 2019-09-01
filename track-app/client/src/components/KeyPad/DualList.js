@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Alert,Row,Col,Container } from "reactstrap";
+import { Alert,Row,Col,Container, Button } from "reactstrap";
 import DualListBox from "react-dual-listbox"
 import "react-dual-listbox/lib/react-dual-listbox.css"
 import "font-awesome/css/font-awesome.min.css"
@@ -48,6 +48,17 @@ class KeyPad extends Component {
   }
 
 
+modify(){
+
+  api.editCurso(this.props.id, 
+    {"materia" : this.props.materia,
+     "sede" : this.props.sede,
+      "anio" : this.props.anio, 
+      "dias" : this.props.dias,
+      "cuatrimestre" : this.props.cuatrimestre, 
+     "alumnos" : this.state.selectedAlum })
+}
+
   onChange = selectedAlum => {
     this.setState({ selectedAlum });
   };
@@ -88,6 +99,9 @@ console.log(selectedAlum)
           selected={selectedAlum}
           onChange={this.onChange}
         />
+        
+<Button color="success" size="md"   onClick={() => this.modify()}>Aceptar</Button>
+
       </div>
     );
   }
