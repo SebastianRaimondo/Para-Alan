@@ -57,9 +57,9 @@ function getCurso(id) {
   return axios.get("http://localhost:3001/api/cursos/" + id);
 }
 
-function editCurso(id, cursoInfo) {
+function editCurso(id, cursoInfo, cb) {
   axios
-    .put("http://localhost:3001/api/cursos/" + id, cursoInfo);
+    .put("http://localhost:3001/api/cursos/" + id, cursoInfo).then(()=> cb());
 }
 
 function createCurso(curso, cb) {
