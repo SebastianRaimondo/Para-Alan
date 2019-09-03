@@ -3,7 +3,7 @@ import { Alert,Row,Col,Container, Button } from "reactstrap";
 import DualListBox from "react-dual-listbox"
 import "react-dual-listbox/lib/react-dual-listbox.css"
 import "font-awesome/css/font-awesome.min.css"
-import api from "../Api/apiRar"
+
 
 
 const options = [];
@@ -14,7 +14,6 @@ class DualListAlumno extends Component {
   constructor(props) {
     super(props);
     this.state = {
-    data: [],
     selectedAlum: []
   };
 }
@@ -25,12 +24,15 @@ class DualListAlumno extends Component {
 
 
  componentWillMount(){
-   this.setState({selectedAlum : this.props.alumnos})
+   this.setState({selectedAlum : this.props.aElegidos})
+   console.log("component will mount dual list alumno")
+
  }
 
   componentDidMount() { 
-    api.getAlumumnos().then(res => this.setState({ data: res.data })).then(()=> {this.state.data.forEach((alum) => 
-           {options.push({value: alum._id , label: alum.nombre + " " +alum.apellido })})});
+    this.props.alumnos.forEach((alum) => 
+           {options.push({value: alum._id , label: alum.nombre + " " +alum.apellido })});
+           console.log("Component did mount dual list alumno")
   }
 
 
@@ -39,9 +41,9 @@ class DualListAlumno extends Component {
   };
   
   render() {
-
+console.log("render dual list alumno")
 const { selectedAlum } = this.state;
-console.log(selectedAlum)
+//console.log(selectedAlum)
     return (
       <div>
         <Alert color="dark">

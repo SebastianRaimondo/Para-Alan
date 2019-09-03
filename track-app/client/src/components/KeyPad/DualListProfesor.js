@@ -3,7 +3,7 @@ import { Alert,Row,Col,Container, Button } from "reactstrap";
 import DualListBox from "react-dual-listbox"
 import "react-dual-listbox/lib/react-dual-listbox.css"
 import "font-awesome/css/font-awesome.min.css"
-import api from "../Api/apiRar"
+
 
 
 
@@ -14,9 +14,7 @@ class DualListProfesor extends Component {
   constructor(props) {
     super(props);
     this.state = {
-    data: [],
-    selectedProf: [],
-    profesoresDelCurso: []
+    selectedProf: []
   };
 }
 
@@ -26,13 +24,17 @@ class DualListProfesor extends Component {
 
 
  componentWillMount(){
-  this.setState({selectedProf : this.props.profesores})
-
+    this.setState({selectedProf : this.props.pElegidos})
+ }
+ componentDidUpdate(){
+ 
  }
 
   componentDidMount() { 
-    api.getProfesores().then(res => this.setState({ data: res.data })).then(()=> {this.state.data.forEach((prof) => 
-           {options.push({value: prof._id , label: prof.nombre + " " +prof.apellido })})});
+ 
+    this.props.profesores.forEach((prof) => 
+     {options.push({value: prof._id , label: prof.nombre + " " +prof.apellido })});
+
   }
 
 
@@ -43,7 +45,6 @@ class DualListProfesor extends Component {
   render() {
 const { selectedProf } = this.state;
 console.log(selectedProf)
-
     return (
       <div>
         <Alert color="dark">
@@ -67,7 +68,7 @@ console.log(selectedProf)
           onChange={this.onChange}
         />
         
-<Button color="success" size="md"   onClick={() => {this.props.cbFnProf(this.state.selectedProf); this.props.onCollapse()}}>Aceptar</Button>
+<Button color="success" size="md"   onClick={() => {this.props.cbFnProf(this.state.selectedProf); this.props.onCollapse();console.log(this.state.selectedProf)}}>Aceptar</Button>
 
       </div>
     );
