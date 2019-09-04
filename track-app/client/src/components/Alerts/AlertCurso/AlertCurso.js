@@ -4,7 +4,7 @@ import React from 'react';
 const AlertCurso = (props) => {
     return (
       <div>
-        <Alert color="dark">
+        <Alert color="secondary">
         <h6>Materia: <span className="label label-default"></span>{props.materia} </h6>
         <h6>Sede: <span className="label label-default">{props.sede}</span></h6>
         <h6>Dias: <span className="label label-default">{props.dias}</span></h6>

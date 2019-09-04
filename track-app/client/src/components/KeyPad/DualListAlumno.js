@@ -3,6 +3,7 @@ import { Alert, Row, Col, Container, Button, ButtonGroup } from "reactstrap";
 import DualListBox from "react-dual-listbox";
 import "react-dual-listbox/lib/react-dual-listbox.css";
 import "font-awesome/css/font-awesome.min.css";
+import { FaTimes, FaRegSave} from 'react-icons/fa';
 
 const options = [];
 
@@ -63,11 +64,10 @@ class DualListAlumno extends Component {
           onChange={this.onChange}
         />
 
-        <br></br>
-        <div>
+        <div className = "card-header">
           <ButtonGroup>
             <Button
-              color="success"
+              color="primary"
               size="sm"
               disabled={!this.state.userSelect}
               onClick={() => {
@@ -76,7 +76,7 @@ class DualListAlumno extends Component {
                 this.props.onCollapse();
               }}
             >
-              Guardar
+            <FaRegSave/>
             </Button>
             <Button
               color="danger"
@@ -87,7 +87,7 @@ class DualListAlumno extends Component {
                 this.props.onCollapse();
               }}
             >
-              Cancelar
+              <FaTimes/>
             </Button>
           </ButtonGroup>
         </div>
