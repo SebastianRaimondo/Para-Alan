@@ -5,7 +5,7 @@ import "react-dual-listbox/lib/react-dual-listbox.css";
 import "font-awesome/css/font-awesome.min.css";
 import { FaTimes, FaRegSave } from "react-icons/fa";
 
-class DualList extends Component {
+class DualListPersona extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -99,4 +99,4 @@ class DualList extends Component {
   }
 }
 
-export default DualList;
+export default DualListPersona;

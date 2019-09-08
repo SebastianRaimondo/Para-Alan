@@ -29,31 +29,45 @@ export default class ProfesorBrowser extends React.Component {
   render() {
     const { data } = this.state;
     return (
-      <Table striped>
-        <thead>
-          <div>
-            <th>
-              <NuevoProfesor addFn={() => this.add()} />
-            </th>
-          </div>
-          <tr>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>
-        {data.map((prof, idx) => (
-          <ProfesorRow
-            key={idx}
-            indice={idx}
-            nombre={prof.nombre}
-            apellido={prof.apellido}
-            id={prof._id}
-            callbackFn={id => this.delete(id)}
-            cbAdd={id => this.add()}
-          />
-        ))}
-      </Table>
+      <div className="container">
+        <div className="row">
+          <NuevoProfesor addFn={() => this.add()} />
+        </div>
+
+        <div className="row">
+          <Table striped>
+            <thead>
+              <tr>
+                <div className="row">
+                  <div className="col-4">
+                    {" "}
+                    <th>Nombre</th>
+                  </div>
+                  <div className="col-4">
+                    {" "}
+                    <th>Apellido</th>
+                  </div>
+                  <div className="col-4">
+                    {" "}
+                    <th>Acciones</th>{" "}
+                  </div>
+                </div>
+              </tr>
+            </thead>
+            {data.map((prof, idx) => (
+              <ProfesorRow
+                key={idx}
+                indice={idx}
+                nombre={prof.nombre}
+                apellido={prof.apellido}
+                id={prof._id}
+                callbackFn={id => this.delete(id)}
+                cbAdd={id => this.add()}
+              />
+            ))}
+          </Table>
+        </div>
+      </div>
     );
   }
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardImg, CardBody } from "reactstrap";
+import { Card, CardBody } from "reactstrap";
 import EditProfesorForm from "../Forms/EditProfesorForm";
 
 const CardEditProfesorForm = props => {
@@ -8,7 +8,6 @@ const CardEditProfesorForm = props => {
   return (
     <div>
       <Card>
-        <CardImg top width="100%" />
         <CardBody>
           <EditProfesorForm {...props} />
         </CardBody>
