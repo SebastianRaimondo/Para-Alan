@@ -1,6 +1,5 @@
 const axios = require("axios");
 
-
 //Crud Alumnos
 
 function getAlu(id) {
@@ -25,7 +24,6 @@ function getAlumumnos() {
   return axios.get("http://localhost:3001/api/alumnos");
 }
 
-
 //Crud Profesores
 
 function getProf(id) {
@@ -39,7 +37,10 @@ function editProf(id, aluInfo, cb) {
 }
 
 function createProf(alu, cb) {
-  axios.post("http://localhost:3001/api/profesores/", alu).then(() => {console.log("prueba api"); cb()});
+  axios.post("http://localhost:3001/api/profesores/", alu).then(() => {
+    console.log("prueba api");
+    cb();
+  });
 }
 
 function deleteProf(id, fn) {
@@ -52,18 +53,21 @@ function getProfesores() {
 
 //Crud Cursos
 
-
 function getCurso(id) {
   return axios.get("http://localhost:3001/api/cursos/" + id);
 }
 
 function editCurso(id, cursoInfo, cb) {
   axios
-    .put("http://localhost:3001/api/cursos/" + id, cursoInfo).then(()=> cb());
+    .put("http://localhost:3001/api/cursos/" + id, cursoInfo)
+    .then(() => cb());
 }
 
 function createCurso(curso, cb) {
-  axios.post("http://localhost:3001/api/cursos/", curso).then(() => {console.log("prueba api"); cb()});
+  axios.post("http://localhost:3001/api/cursos/", curso).then(() => {
+    console.log("prueba api");
+    cb();
+  });
 }
 
 function deleteCurso(id, fn) {
@@ -73,7 +77,6 @@ function deleteCurso(id, fn) {
 function getCursos() {
   return axios.get("http://localhost:3001/api/cursos");
 }
-
 
 export default {
   getAlumumnos,
@@ -91,5 +94,4 @@ export default {
   createCurso,
   deleteCurso,
   getCurso
-
 };

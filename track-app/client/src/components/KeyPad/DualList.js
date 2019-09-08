@@ -5,59 +5,63 @@ import "react-dual-listbox/lib/react-dual-listbox.css";
 import "font-awesome/css/font-awesome.min.css";
 import { FaTimes, FaRegSave } from "react-icons/fa";
 
-class DualListProfesor extends Component {
+class DualList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedProf: [],
+      selectedItem: [],
       userSelect: false,
       options: []
     };
   }
 
-  fillOptionsArray(value, label) {
-    this.state.options.push({ value: value, label: label });
+  /*   fillOptionsArray(value, label) {
+    options.push({ value: value, label: label });
   }
-
+ */
   componentWillMount() {
-    this.setState({ selectedProf: this.props.pElegidos });
+    this.setState({ selectedItem: this.props.selectedItems });
+    console.log("component will mount dual list alumno");
   }
 
   componentDidMount() {
-    this.props.profesores.forEach(prof => {
-      this.state.options.push({
-        value: prof._id,
-        label: prof.nombre + " " + prof.apellido
+    const options = [];
+    this.props.alumnos.forEach(alum => {
+      options.push({
+        value: alum._id,
+        label: alum.nombre + " " + alum.apellido
       });
     });
+    this.setState({ options });
+    console.log("Component did mount dual list alumno");
   }
 
-  onChange = selectedProf => {
-    this.setState({ selectedProf });
+  onChange = selectedAlum => {
+    this.setState({ selectedAlum });
     this.setState({ userSelect: true });
   };
 
   render() {
-    const { selectedProf } = this.state;
-    console.log(selectedProf);
+    const { selectedAlum } = this.state;
     return (
       <div>
         <Alert color="dark">
           <Container>
             <Row>
               <Col xs="9">
-                <h5>Profesores cargados</h5>
+                <h5>Alumnos cargados</h5>
               </Col>
 
               <Col xs="3">
-                <h5>Profesores del curso</h5>
+                <h5>Alumnos del curso</h5>
               </Col>
             </Row>
           </Container>
         </Alert>
+
         <DualListBox
           options={this.state.options}
-          selected={selectedProf}
+          selected={selectedAlum}
           onChange={this.onChange}
         />
 
@@ -68,7 +72,7 @@ class DualListProfesor extends Component {
               size="sm"
               disabled={!this.state.userSelect}
               onClick={() => {
-                this.props.cbFnProf(this.state.selectedProf);
+                this.props.cbFnAlu(this.state.selectedAlum);
                 this.setState({ userSelect: false });
                 this.props.onCollapse();
               }}
@@ -79,8 +83,10 @@ class DualListProfesor extends Component {
               color="danger"
               size="sm"
               onClick={() => {
-                this.setState({ selectedProf: this.props.pElegidos });
-                this.setState({ userSelect: false });
+                this.setState({
+                  selectedAlum: this.props.aElegidos,
+                  userSelect: false
+                });
                 this.props.onCollapse();
               }}
             >
@@ -93,4 +99,4 @@ class DualListProfesor extends Component {
   }
 }
 
-export default DualListProfesor;
+export default DualList;

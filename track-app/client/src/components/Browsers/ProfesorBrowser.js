@@ -2,7 +2,7 @@ import React from "react";
 import { Table } from "reactstrap";
 import ProfesorRow from "../Rows/ProfesorRow";
 import api from "../Api/apiRar";
-import NuevoProfesor from "../Collapses/NuevoProfesor"
+import NuevoProfesor from "../Collapses/NuevoProfesor";
 
 export default class ProfesorBrowser extends React.Component {
   constructor() {
@@ -19,8 +19,7 @@ export default class ProfesorBrowser extends React.Component {
   }
 
   add() {
-  
-      api.getProfesores().then(res => this.setState({ data: res.data }))
+    api.getProfesores().then(res => this.setState({ data: res.data }));
   }
 
   componentDidMount() {
@@ -30,22 +29,17 @@ export default class ProfesorBrowser extends React.Component {
   render() {
     const { data } = this.state;
     return (
-
-     
-
-      <Table>
-           
+      <Table striped>
         <thead>
+          <div>
+            <th>
+              <NuevoProfesor addFn={() => this.add()} />
+            </th>
+          </div>
           <tr>
-            
-       
             <th>Nombre</th>
             <th>Apellido</th>
             <th>Acciones</th>
-        
-            <div>
-            <th> <NuevoProfesor addFn={()=> this.add()}/></th>
-            </div>
           </tr>
         </thead>
         {data.map((prof, idx) => (
@@ -59,7 +53,6 @@ export default class ProfesorBrowser extends React.Component {
             cbAdd={id => this.add()}
           />
         ))}
-         
       </Table>
     );
   }

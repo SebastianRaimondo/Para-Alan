@@ -44,8 +44,8 @@ class CursoRow extends Component {
               <Link
               
               to={"/curso/" + this.props.id}
-              className="btn btn-info Edit-Button btn-sm"
-              color="info"
+              className="btn btn-primary Edit-Button btn-sm"
+              
               
             >
                <FaArrowAltCircleRight/>

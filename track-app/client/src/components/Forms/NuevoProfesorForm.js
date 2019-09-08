@@ -1,32 +1,36 @@
 import React from "react";
 import { Form, FormGroup, Label, Input, Button, ButtonGroup } from "reactstrap";
 import api from "../Api/apiRar";
-import { FaCheck} from 'react-icons/fa';
-import { FaTimes } from 'react-icons/fa';
+import { FaCheck } from "react-icons/fa";
+import { FaTimes } from "react-icons/fa";
 
 export default class NuevoProfesorForm extends React.Component {
   constructor(props) {
     super(props);
     this.clean = this.clean.bind(this);
-    
+
     this.state = {
       nombre: "",
       apellido: ""
     };
   }
 
-
- clean(){
-  this.setState(state=>{state.nombre= ""; state.apellido= ""});
-  this.props.onCollapse();
-
- }
-
-  accept() {
-
-    api.createProf(this.state, ()=> this.props.addFn());
+  clean() {
+    this.setState(state => {
+      state.nombre = "";
+      state.apellido = "";
+    });
+    this.props.onCollapse();
   }
 
+  accept() {
+    let stateCopy = {
+      nombre: this.state.nombre,
+      apellido: this.state.apellido
+    };
+    this.clean();
+    api.createProf(stateCopy, () => this.props.addFn());
+  }
 
   render() {
     return (
@@ -51,16 +55,26 @@ export default class NuevoProfesorForm extends React.Component {
         </FormGroup>
 
         <ButtonGroup>
-          <Button className="Edit-Button" color="success" size="sm" onClick={() => {this.accept(); this.props.onCollapse();}}>
-            <FaCheck/>
+          <Button
+            className="Edit-Button"
+            color="success"
+            size="sm"
+            onClick={() => {
+              this.accept();
+            }}
+          >
+            <FaCheck />
           </Button>
         </ButtonGroup>
         <ButtonGroup>
-          
-            <Button className="Cancell-Button" color="danger" size="sm" onClick={() => this.clean()}>
-             <FaTimes/>
-            </Button>
-          
+          <Button
+            className="Cancell-Button"
+            color="danger"
+            size="sm"
+            onClick={() => this.clean()}
+          >
+            <FaTimes />
+          </Button>
         </ButtonGroup>
       </Form>
     );

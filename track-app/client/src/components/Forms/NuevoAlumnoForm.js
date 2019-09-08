@@ -1,9 +1,8 @@
 import React from "react";
 import { Form, FormGroup, Label, Input, Button, ButtonGroup } from "reactstrap";
-import { Link } from "react-router-dom";
 import api from "../Api/apiRar";
-import { FaCheck} from 'react-icons/fa';
-import { FaTimes } from 'react-icons/fa';
+import { FaCheck } from "react-icons/fa";
+import { FaTimes } from "react-icons/fa";
 
 export default class NuevoAlumnoForm extends React.Component {
   constructor(props) {
@@ -18,14 +17,29 @@ export default class NuevoAlumnoForm extends React.Component {
     };
   }
 
-  clean(){
-    this.setState(state=>{state.nombre= ""; state.apellido="";state.nLegajo="";state.email="";state.userGit=""});
+  clean() {
+    this.setState(state => {
+      state.nombre = "";
+      state.apellido = "";
+      state.nLegajo = "";
+      state.email = "";
+      state.userGit = "";
+    });
     this.props.onCollapse();
-  
-   }
+  }
 
   accept() {
-    api.createAlu(this.state, ()=> this.props.addFn());
+    let stateCopy = {
+      nombre: this.state.nombre,
+      apellido: this.state.apellido,
+      nLegajo: this.state.nLegajo,
+      email: this.state.email,
+      userGit: this.state.userGit
+    };
+
+    this.clean();
+
+    api.createAlu(stateCopy, () => this.props.addFn());
   }
 
   render() {
@@ -80,16 +94,26 @@ export default class NuevoAlumnoForm extends React.Component {
         </FormGroup>
 
         <ButtonGroup>
-          <Button className="Edit-Button" size="sm" color="success" onClick={() => {this.accept(); this.props.onCollapse();}}>
-           <FaCheck/>
+          <Button
+            className="Edit-Button"
+            size="sm"
+            color="success"
+            onClick={() => {
+              this.accept();
+            }}
+          >
+            <FaCheck />
           </Button>
         </ButtonGroup>
         <ButtonGroup>
-          <Link to="/">
-          <Button className="Cancell-Button"  size="sm" color="danger" onClick={() => this.clean()}>
-              <FaTimes/>
-            </Button>
-          </Link>
+          <Button
+            className="Cancell-Button"
+            size="sm"
+            color="danger"
+            onClick={() => this.clean()}
+          >
+            <FaTimes />
+          </Button>
         </ButtonGroup>
       </Form>
     );

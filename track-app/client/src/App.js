@@ -1,37 +1,30 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch } from "react-router-dom";
 import Route from "react-router-dom/Route";
-import { Row } from "reactstrap";
-import Pestañas from "./Components/Pestañas/Pestañas"
-import Curso from "./Components/Curso/Curso"
+import Curso from "./Components/Curso/Curso";
 import "./App.css";
-
+import NavegationBar from "./Components/Navegation/NavegationBar";
+import ProfesorBrowser from "./Components/Browsers/ProfesorBrowser";
+import AlumnoBrowser from "./Components/Browsers/AlumnoBrowser";
+import CursoBrowser from "./Components/Browsers/CursoBrowser";
 
 class App extends Component {
   render() {
     return (
       <div>
-        <div className="container">
+        <div>
+          <NavegationBar />
+        </div>
+        <br></br>
+
+        <div className="fluid">
           <Router>
-            <div>
-              
-              <Row>
-                <Switch>
-                  <Route path="/" 
-                     exact
-                     strict
-                     component={Pestañas} />
-                 
-                  <Route
-                    path="/curso/:id"
-                    exact
-                    strict
-                    component={Curso}
-                  />
-                 
-                </Switch>
-              </Row>
-            </div>
+            <Switch>
+              <Route path="/profesores" component={ProfesorBrowser} />
+              <Route path="/alumnos" component={AlumnoBrowser} />
+              <Route path="/cursos" component={CursoBrowser} />
+              <Route path="/curso/:id" component={Curso} />
+            </Switch>
           </Router>
         </div>
       </div>

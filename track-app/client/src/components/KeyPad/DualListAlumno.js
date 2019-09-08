@@ -3,35 +3,36 @@ import { Alert, Row, Col, Container, Button, ButtonGroup } from "reactstrap";
 import DualListBox from "react-dual-listbox";
 import "react-dual-listbox/lib/react-dual-listbox.css";
 import "font-awesome/css/font-awesome.min.css";
-import { FaTimes, FaRegSave} from 'react-icons/fa';
-
-const options = [];
+import { FaTimes, FaRegSave } from "react-icons/fa";
 
 class DualListAlumno extends Component {
   constructor(props) {
     super(props);
     this.state = {
       selectedAlum: [],
-      userSelect: false
+      userSelect: false,
+      options: []
     };
   }
 
-  fillOptionsArray(value, label) {
+  /*   fillOptionsArray(value, label) {
     options.push({ value: value, label: label });
   }
-
+ */
   componentWillMount() {
     this.setState({ selectedAlum: this.props.aElegidos });
     console.log("component will mount dual list alumno");
   }
 
   componentDidMount() {
+    const options = [];
     this.props.alumnos.forEach(alum => {
       options.push({
         value: alum._id,
         label: alum.nombre + " " + alum.apellido
       });
     });
+    this.setState({ options });
     console.log("Component did mount dual list alumno");
   }
 
@@ -59,12 +60,12 @@ class DualListAlumno extends Component {
         </Alert>
 
         <DualListBox
-          options={options}
+          options={this.state.options}
           selected={selectedAlum}
           onChange={this.onChange}
         />
 
-        <div className = "card-header">
+        <div className="card-header">
           <ButtonGroup>
             <Button
               color="primary"
@@ -76,18 +77,20 @@ class DualListAlumno extends Component {
                 this.props.onCollapse();
               }}
             >
-            <FaRegSave/>
+              <FaRegSave />
             </Button>
             <Button
               color="danger"
               size="sm"
               onClick={() => {
-                this.setState({ selectedAlum: this.props.aElegidos });
-                this.setState({ userSelect: false });
+                this.setState({
+                  selectedAlum: this.props.aElegidos,
+                  userSelect: false
+                });
                 this.props.onCollapse();
               }}
             >
-              <FaTimes/>
+              <FaTimes />
             </Button>
           </ButtonGroup>
         </div>

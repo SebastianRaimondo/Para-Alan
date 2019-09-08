@@ -1,9 +1,8 @@
 import React from "react";
 import { Form, FormGroup, Label, Input, Button, ButtonGroup } from "reactstrap";
-import { Link } from "react-router-dom";
 import api from "../Api/apiRar";
-import { FaCheck} from 'react-icons/fa';
-import { FaTimes } from 'react-icons/fa';
+import { FaCheck } from "react-icons/fa";
+import { FaTimes } from "react-icons/fa";
 
 export default class NuevoCursoForm extends React.Component {
   constructor(props) {
@@ -18,14 +17,27 @@ export default class NuevoCursoForm extends React.Component {
     };
   }
 
-  clean(){
-    this.setState(state=>{state.materia= ""; state.sede="";state.dias="";state.cuatrimestre="";state.anio=""});
+  clean() {
+    this.setState(state => {
+      state.materia = "";
+      state.sede = "";
+      state.dias = "";
+      state.cuatrimestre = "";
+      state.anio = "";
+    });
     this.props.onCollapse();
-  
-   }
+  }
 
   accept() {
-    api.createCurso(this.state, ()=> this.props.addFn());
+    let stateCopy = {
+      materia: this.state.materia,
+      sede: this.state.sede,
+      dias: this.state.dias,
+      cuatrimestre: this.state.cuatrimestre,
+      anio: this.state.anio
+    };
+    this.clean();
+    api.createCurso(stateCopy, () => this.props.addFn());
   }
 
   render() {
@@ -55,9 +67,7 @@ export default class NuevoCursoForm extends React.Component {
             type="string"
             name="dias"
             value={this.state.dias}
-            onChange={event =>
-              this.setState({ dias: event.target.value})
-            }
+            onChange={event => this.setState({ dias: event.target.value })}
           />
         </FormGroup>
         <FormGroup>
@@ -66,7 +76,9 @@ export default class NuevoCursoForm extends React.Component {
             type="string"
             name="cuatrimestre"
             value={this.state.cuatrimestre}
-            onChange={event => this.setState({ cuatrimestre: event.target.value })}
+            onChange={event =>
+              this.setState({ cuatrimestre: event.target.value })
+            }
           />
         </FormGroup>
         <FormGroup>
@@ -80,16 +92,26 @@ export default class NuevoCursoForm extends React.Component {
         </FormGroup>
 
         <ButtonGroup>
-          <Button className="Edit-Button" size="sm" color="success" onClick={() => {this.accept(); this.props.onCollapse();}}>
-           <FaCheck/>
+          <Button
+            className="Edit-Button"
+            size="sm"
+            color="success"
+            onClick={() => {
+              this.accept();
+            }}
+          >
+            <FaCheck />
           </Button>
         </ButtonGroup>
         <ButtonGroup>
-          <Link to="/">
-          <Button className="Cancell-Button"  size="sm" color="danger" onClick={() => this.clean()}>
-              <FaTimes/>
-            </Button>
-          </Link>
+          <Button
+            className="Cancell-Button"
+            size="sm"
+            color="danger"
+            onClick={() => this.clean()}
+          >
+            <FaTimes />
+          </Button>
         </ButtonGroup>
       </Form>
     );

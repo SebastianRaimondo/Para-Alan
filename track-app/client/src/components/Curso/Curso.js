@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import AdminAlumno from "../Collapses/AdminAlumno";
 import AdminProfesor from "../Collapses/AdminProfesor";
-import { Container, Row, Col } from "reactstrap";
+import { Container, Row, Col, Button } from "reactstrap";
 import api from "../Api/apiRar";
 import AlertCurso from "../Alerts/AlertCurso/AlertCurso";
 import AlertError from "../Alerts/AlertError";
+import { Link } from "react-router-dom";
 
 class Curso extends Component {
   constructor() {
@@ -60,28 +61,36 @@ class Curso extends Component {
 
   updateStateWithAlum(alumnos) {
     this.setState({ data: this.createNewStateWithAlum(alumnos) });
-    api.editCurso(this.state.data._id, {
-      materia: this.state.data.materia,
-      sede: this.state.data.sede,
-      anio: this.state.data.anio,
-      dias: this.state.data.dias,
-      cuatrimestre: this.state.data.cuatrimestre,
-      profesores: this.state.data.profesores,
-      alumnos: alumnos
-    });
+    api.editCurso(
+      this.state.data._id,
+      {
+        materia: this.state.data.materia,
+        sede: this.state.data.sede,
+        anio: this.state.data.anio,
+        dias: this.state.data.dias,
+        cuatrimestre: this.state.data.cuatrimestre,
+        profesores: this.state.data.profesores,
+        alumnos: alumnos
+      },
+      () => console.log("Pedro anido")
+    );
   }
 
   updateStateWithProf(profesores) {
     this.setState({ data: this.createNewStateWithProf(profesores) });
-    api.editCurso(this.state.data._id, {
-      materia: this.state.data.materia,
-      sede: this.state.data.sede,
-      anio: this.state.data.anio,
-      dias: this.state.data.dias,
-      cuatrimestre: this.state.data.cuatrimestre,
-      profesores: profesores,
-      alumnos: this.state.data.alumnos
-    });
+    api.editCurso(
+      this.state.data._id,
+      {
+        materia: this.state.data.materia,
+        sede: this.state.data.sede,
+        anio: this.state.data.anio,
+        dias: this.state.data.dias,
+        cuatrimestre: this.state.data.cuatrimestre,
+        profesores: profesores,
+        alumnos: this.state.data.alumnos
+      },
+      () => console.log("Pedro anido")
+    );
   }
 
   render() {
@@ -105,7 +114,14 @@ class Curso extends Component {
                 cuatrimestre={data.cuatrimestre}
                 anio={data.anio}
               />
-              <br></br>
+              <div className="card-header">
+                <Link to={"/cursos"}>
+                  {" "}
+                  <Button color="primary" size="sm">
+                    Ir a cursos
+                  </Button>{" "}
+                </Link>
+              </div>
               <AdminAlumno
                 cbFnAlu={alu => this.updateStateWithAlum(alu)}
                 alumnos={alumParaElegir}
