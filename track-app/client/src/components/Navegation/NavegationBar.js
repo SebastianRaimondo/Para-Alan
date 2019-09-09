@@ -1,20 +1,8 @@
 import React from "react";
-import { Navbar, NavbarBrand, Nav, NavItem, NavLink } from "reactstrap";
+import { Link } from "react-router-dom";
+import { Navbar, NavbarBrand, Nav, NavItem, NavLink, Button } from "reactstrap";
 
 export default class NavegationBar extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.toggle = this.toggle.bind(this);
-    this.state = {
-      isOpen: false
-    };
-  }
-  toggle() {
-    this.setState({
-      isOpen: !this.state.isOpen
-    });
-  }
   render() {
     return (
       <div>
@@ -24,17 +12,17 @@ export default class NavegationBar extends React.Component {
           light
           expand="md"
         >
-          <NavbarBrand href="/">Home</NavbarBrand>
-          <Nav className="mr-auto" navbar>
-            <NavItem>
-              <NavLink href="/profesores/">Profesores</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="/alumnos">Alumnos</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="/cursos">Cursos</NavLink>
-            </NavItem>
+          <Nav className="mr-auto" inline>
+            <Button color="link">
+              <Link to={"/profesores"}>Profesores</Link>
+            </Button>
+
+            <Button color="link">
+              <Link to={"/alumnos"}> Alumnos</Link>
+            </Button>
+            <Button color="link">
+              <Link to={"/cursos"}> Cursos</Link>
+            </Button>
           </Nav>
         </Navbar>
       </div>

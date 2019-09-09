@@ -12,19 +12,16 @@ class App extends Component {
   render() {
     return (
       <div>
-        <div>
-          <NavegationBar />
-        </div>
-        <br></br>
-
         <div className="fluid">
           <Router>
-            <Switch>
+            <div>
+              <Route path="/" component={NavegationBar} />
+              <br></br>
               <Route path="/profesores" component={ProfesorBrowser} />
               <Route path="/alumnos" component={AlumnoBrowser} />
               <Route path="/cursos" component={CursoBrowser} />
               <Route path="/curso/:id" component={Curso} />
-            </Switch>
+            </div>
           </Router>
         </div>
       </div>
