@@ -19,8 +19,7 @@ ProfCtrl.createProfesor = async (req, res, next) => {
     console.log(req);
     const profesor = new Prof({
       nombre: req.body.nombre,
-      apellido: req.body.apellido,
-      alumnos: req.body.alumnos
+      apellido: req.body.apellido
     });
     await profesor.save();
     res.created(profesor);

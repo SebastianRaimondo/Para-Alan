@@ -3,9 +3,8 @@ const { Schema } = mongoose;
 
 const profesorSchema = new Schema({
   nombre: { type: String },
-  apellido: { type: String },
-  alumnos: [{ nombreYApellido: String }]
+  apellido: { type: String }
 });
 
 module.exports = mongoose.model("Prof", profesorSchema);
-module.exports 
+module.exports;

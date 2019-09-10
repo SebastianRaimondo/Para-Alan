@@ -23,7 +23,7 @@ aluCtrl.createAlu = async (req, res, next) => {
       nLegajo: req.body.nLegajo,
       email: req.body.email,
       userGit: req.body.userGit,
-      pAsignados: req.body.pAsignados
+      asignadoA: req.body.asignadoA
     });
     await alumno.save();
     res.created(alumno);
@@ -55,7 +55,7 @@ aluCtrl.editAlu = async (req, res, next) => {
           nLegajo: req.body.nLegajo,
           email: req.body.email,
           userGit: req.body.userGit,
-          pAsignados: req.body.pAsignados
+          asignadoA: req.body.asignadoA
         }
       }
     );
