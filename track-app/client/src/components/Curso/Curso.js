@@ -6,6 +6,7 @@ import api from "../Api/apiRar";
 import AlertCurso from "../Alerts/AlertCurso/AlertCurso";
 import AlertError from "../Alerts/AlertError";
 import { Link } from "react-router-dom";
+import AsigAlumProfBrowser from "../Browsers/AsigAlumProfBrowser";
 
 class Curso extends Component {
   constructor() {
@@ -133,6 +134,11 @@ class Curso extends Component {
                 cbFnProf={prof => this.updateStateWithProf(prof)}
                 profesores={profParaElegir}
                 pElegidos={data.profesores}
+              />
+              <br></br>
+              <AsigAlumProfBrowser
+                profsCurso={data.profesores}
+                alumsCurso={data.alumnos}
               />
             </Col>
           </Row>

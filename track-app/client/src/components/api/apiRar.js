@@ -1,4 +1,5 @@
 const axios = require("axios");
+const qs = require("qs");
 
 //Crud Alumnos
 
@@ -21,7 +22,15 @@ function deleteAlu(id, fn) {
 }
 
 function getAlumumnos() {
-  return axios.get("http://localhost:3001/api/alumnos");
+  return axios.get("http://localhost:3001/api/alumnos/");
+}
+
+function getAlumumnosDelCurso(id) {
+  return axios.get("http://localhost:3001/api/alumnos/" + id);
+}
+
+function getSpecAlums(alums) {
+  return axios.get("http://localhost:3001/api/alumnos" + alums);
 }
 
 //Crud Profesores
@@ -55,6 +64,10 @@ function getProfesores() {
 
 function getCurso(id) {
   return axios.get("http://localhost:3001/api/cursos/" + id);
+}
+
+function getCursoCompleto(id) {
+  return axios.get("http://localhost:3001/api/cursos/completo/" + id);
 }
 
 function editCurso(id, cursoInfo, cb) {
@@ -93,5 +106,8 @@ export default {
   editCurso,
   createCurso,
   deleteCurso,
-  getCurso
+  getCurso,
+  getSpecAlums,
+  getAlumumnosDelCurso,
+  getCursoCompleto
 };

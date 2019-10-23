@@ -3,6 +3,7 @@ const router = express.Router();
 
 const cursoCtrl = require("../controllers/curso.controller");
 
+router.get("/completo/:id", cursoCtrl.getCursoCompleto);
 router.get("/", cursoCtrl.getCursos);
 router.post("/", cursoCtrl.createCurso);
 router.get("/:id", cursoCtrl.getCurso);

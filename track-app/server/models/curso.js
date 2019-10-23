@@ -7,8 +7,9 @@ const cursoSchema = new Schema({
   dias: { type: String },
   cuatrimestre: { type: String },
   anio: { type: Number },
-  alumnos: [Schema.Types.ObjectId],
-  profesores: [Schema.Types.ObjectId]
+  alumnos: [{ type: Schema.Types.ObjectId, ref: "Alu" }],
+  profesores: [{ type: Schema.Types.ObjectId, ref: "Prof" }],
+  alumnoProfSignado: [Schema.Types.ObjectId]
 });
 
 module.exports = mongoose.model("Curso", cursoSchema);

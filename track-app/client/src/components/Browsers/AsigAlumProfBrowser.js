@@ -7,18 +7,33 @@ export default class AsigAlumProfBrowser extends React.Component {
   constructor() {
     super();
     this.state = {
-      dataAl: []
+      dataAlu: [],
+      alumnos: []
     };
   }
 
   add() {}
 
   componentDidMount() {
-    api.getAlumumnos().then(res => this.setState({ dataAl: res.data }));
+    const alumnos = [];
+    this.props.alumsCurso.forEach(alum => {
+      alumnos.push({
+        alum
+      });
+    });
+
+    const resultado = [];
+    alumnos.forEach(a => {
+      resultado.push(api.getAlu(a.alum).then(res => res.data));
+    });
+    this.setState({ dataAlu: resultado });
+    //console.log(alumnos);
+    console.log(resultado);
   }
 
   render() {
-    const { dataAl } = this.state;
+    const { dataAlu } = this.state;
+    console.log(dataAlu);
     return (
       <div className="container">
         <div className="row">
@@ -33,18 +48,18 @@ export default class AsigAlumProfBrowser extends React.Component {
 
                   <div className="col-4">
                     {" "}
-                    <th>Asignar a</th>{" "}
+                    <th>Asignar al profesor</th>{" "}
                   </div>
                 </div>
               </tr>
             </thead>
-            {dataAl.map((prof, idx) => (
+            {dataAlu.map((alu, idx) => (
               <AsigProfAluRow
                 key={idx}
                 indice={idx}
-                nombre={prof.nombre}
-                apellido={prof.apellido}
-                id={prof._id}
+                nombre={alu.nombre}
+                apellido={alu.apellido}
+                id={alu._id}
                 callbackFn={id => this.delete(id)}
                 cbAdd={id => this.add()}
               />

@@ -4,6 +4,7 @@ const aluCtrl = {};
 aluCtrl.getAlumumnos = async (req, res, next) => {
   try {
     const alumnos = await Alu.find();
+
     if (alumnos) {
       res.ok(alumnos);
     } else {
@@ -14,6 +15,24 @@ aluCtrl.getAlumumnos = async (req, res, next) => {
   }
 };
 
+//aluCtrl.getAlumumnos = async (req, res, next) => {
+//try {
+// let ids = ["5d7bc555d223470140a8cc67", "5d7bc52cd223470140a8cc66"];
+//let ids = req.params.ids;
+//const alumnos = await Alu.find()
+//.where("_id")
+//.in(ids)
+//.exec();
+//if (alumnos) {
+// res.ok(alumnos);
+//} else {
+// res.notFound();
+// }
+//} catch (exception) {
+// res.internalServerError();
+// }
+//};
+
 aluCtrl.createAlu = async (req, res, next) => {
   try {
     console.log(req);
@@ -22,8 +41,7 @@ aluCtrl.createAlu = async (req, res, next) => {
       apellido: req.body.apellido,
       nLegajo: req.body.nLegajo,
       email: req.body.email,
-      userGit: req.body.userGit,
-      asignadoA: req.body.asignadoA
+      userGit: req.body.userGit
     });
     await alumno.save();
     res.created(alumno);
@@ -55,7 +73,7 @@ aluCtrl.editAlu = async (req, res, next) => {
           nLegajo: req.body.nLegajo,
           email: req.body.email,
           userGit: req.body.userGit,
-          asignadoA: req.body.asignadoA
+          estaEnEstosCursos: req.body.estaEnEstosCursos
         }
       }
     );

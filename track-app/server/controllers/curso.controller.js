@@ -14,6 +14,19 @@ cursoCtrl.getCursos = async (req, res, next) => {
   }
 };
 
+cursoCtrl.getCursoCompleto = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const curso = await Curso.findById(id)
+      .populate("alumnos")
+      .populate("profesores");
+
+    res.ok(curso);
+  } catch (exception) {
+    res.internalServerError();
+  }
+};
+
 cursoCtrl.createCurso = async (req, res, next) => {
   try {
     console.log(req);
@@ -25,7 +38,6 @@ cursoCtrl.createCurso = async (req, res, next) => {
       anio: req.body.anio,
       alumnos: req.body.alumnos,
       profesores: req.body.profesores
-
     });
     await curso.save();
     res.created(curso);
@@ -58,7 +70,8 @@ cursoCtrl.editCurso = async (req, res, next) => {
           cuatrimestre: req.body.cuatrimestre,
           anio: req.body.anio,
           alumnos: req.body.alumnos,
-          profesores: req.body.profesores
+          profesores: req.body.profesores,
+          alumnoProfSignado: req.body.alumnoProfSignado
         }
       }
     );
