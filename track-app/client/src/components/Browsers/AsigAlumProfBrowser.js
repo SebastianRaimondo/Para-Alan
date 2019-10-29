@@ -12,23 +12,10 @@ export default class AsigAlumProfBrowser extends React.Component {
     };
   }
 
-  add() {}
-
   componentDidMount() {
-    const alumnos = [];
-    this.props.alumsCurso.forEach(alum => {
-      alumnos.push({
-        alum
-      });
-    });
-
-    const resultado = [];
-    alumnos.forEach(a => {
-      resultado.push(api.getAlu(a.alum).then(res => res.data));
-    });
-    this.setState({ dataAlu: resultado });
-    //console.log(alumnos);
-    console.log(resultado);
+    api
+      .getCursoCompleto(this.props.idCurso)
+      .then(res => this.setState({ dataAlu: res.data.alumnos }));
   }
 
   render() {

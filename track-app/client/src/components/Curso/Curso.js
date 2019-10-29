@@ -139,6 +139,7 @@ class Curso extends Component {
               <AsigAlumProfBrowser
                 profsCurso={data.profesores}
                 alumsCurso={data.alumnos}
+                idCurso={data._id}
               />
             </Col>
           </Row>
