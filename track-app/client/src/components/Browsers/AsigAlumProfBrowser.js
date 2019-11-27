@@ -46,9 +46,9 @@ export default class AsigAlumProfBrowser extends React.Component {
                 indice={idx}
                 nombre={alu.nombre}
                 apellido={alu.apellido}
-                id={alu._id}
                 callbackFn={id => this.delete(id)}
                 cbAdd={id => this.add()}
+                idCurso={this.props.idCurso}
               />
             ))}
           </Table>

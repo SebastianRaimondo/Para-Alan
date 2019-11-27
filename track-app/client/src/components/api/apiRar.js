@@ -1,5 +1,4 @@
 const axios = require("axios");
-const qs = require("qs");
 
 //Crud Alumnos
 
@@ -77,6 +76,7 @@ function editCurso(id, cursoInfo, cb) {
 }
 
 function createCurso(curso, cb) {
+  console.log(curso);
   axios.post("http://localhost:3001/api/cursos/", curso).then(() => {
     console.log("prueba api");
     cb();

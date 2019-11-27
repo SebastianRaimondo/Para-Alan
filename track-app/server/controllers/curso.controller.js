@@ -29,7 +29,7 @@ cursoCtrl.getCursoCompleto = async (req, res, next) => {
 
 cursoCtrl.createCurso = async (req, res, next) => {
   try {
-    console.log(req);
+    console.log("request controller(" + req + ")");
     const curso = new Curso({
       materia: req.body.materia,
       sede: req.body.sede,
@@ -37,11 +37,14 @@ cursoCtrl.createCurso = async (req, res, next) => {
       cuatrimestre: req.body.cuatrimestre,
       anio: req.body.anio,
       alumnos: req.body.alumnos,
-      profesores: req.body.profesores
+      profesores: req.body.profesores,
+      asignaciones: req.body.asignaciones
     });
+    console.log("Lama(" + curso + ")");
     await curso.save();
     res.created(curso);
   } catch (exception) {
+    console.log("esta es la exception" + exception);
     res.internalServerError();
   }
 };
@@ -71,7 +74,7 @@ cursoCtrl.editCurso = async (req, res, next) => {
           anio: req.body.anio,
           alumnos: req.body.alumnos,
           profesores: req.body.profesores,
-          alumnoProfSignado: req.body.alumnoProfSignado
+          asignaciones: req.body.asignaciones
         }
       }
     );

@@ -1,27 +1,32 @@
 import React from "react";
-import { Form, FormGroup, Input, Button, ButtonGroup } from "reactstrap";
+import { Form, FormGroup, Input, ButtonGroup } from "reactstrap";
 import api from "../Api/apiRar";
-import { FaCheck } from "react-icons/fa";
 
 export default class SelectProfForm extends React.Component {
   constructor() {
     super();
     this.state = {
       data: [],
-      profSelected: []
+      profSelected: [],
+      options: []
     };
   }
 
   componentDidMount() {
-    // api.getProfesores().then(res => this.setState({ data: res.data }));
-    //this.setState({ profSelected: this.props.id });
+    api
+      .getCursoCompleto(this.props.idCurso)
+      .then(res => this.setState({ data: res.data.profesores }));
   }
 
   render() {
     const store = this.state.data.map(prof => {
-      return { value: prof._id, display: prof.nombre + " " + prof.apellido };
+      return {
+        value: prof._id,
+        display: prof.nombre + " " + prof.apellido
+      };
     });
-    //  console.log(this.props);
+    console.log(this.state.profSelected);
+    console.log(store);
     return (
       <Form>
         <FormGroup>
@@ -39,17 +44,6 @@ export default class SelectProfForm extends React.Component {
                 </option>
               ))}
             </Input>
-
-            <Button
-              className="Edit-Button"
-              size="sm"
-              color="success"
-              onClick={() => {
-                this.accept();
-              }}
-            >
-              <FaCheck />
-            </Button>
           </ButtonGroup>
         </FormGroup>
       </Form>

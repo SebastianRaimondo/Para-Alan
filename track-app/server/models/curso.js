@@ -9,7 +9,12 @@ const cursoSchema = new Schema({
   anio: { type: Number },
   alumnos: [{ type: Schema.Types.ObjectId, ref: "Alu" }],
   profesores: [{ type: Schema.Types.ObjectId, ref: "Prof" }],
-  alumnoProfSignado: [Schema.Types.ObjectId]
+  asignaciones: [
+    {
+      profesor: { type: Schema.Types.ObjectId, ref: "Prof" },
+      alumno: { type: Schema.Types.ObjectId, ref: "Alu" }
+    }
+  ]
 });
 
 module.exports = mongoose.model("Curso", cursoSchema);
